@@ -1,0 +1,73 @@
+The following is a landing page for Guides Go,
+built using Next.js, Shadcn UI, Framer Motion, 
+and Tailwind CSS.
+
+
+App structure:
+app/
+├── layout.tsx
+├── page.tsx
+├── globals.css
+├── lib/
+│   └── utils.ts
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   └── FloatingCTA.tsx
+│   ├── sections/
+│   │   ├── Hero.tsx
+│   │   ├── Features.tsx
+│   │   ├── SocialProof.tsx
+│   │   ├── FeaturesBreakdown.tsx
+│   │   ├── CommunityImpact.tsx
+│   │   ├── SafetyTrust.tsx
+│   │   ├── AppShowcase.tsx
+│   │   ├── DownloadSection.tsx
+│   │   ├── GuideRecruitment.tsx
+│   │   └── FinalCTA.tsx
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Container.tsx
+│   │   └── Typography.tsx
+│   └── shared/
+│       ├── TestimonialCard.tsx
+│       ├── FeatureCard.tsx
+│       └── StatsCounter.tsx
+├── constants/
+│   ├── navigation.ts
+│   └── features.ts
+└── animations/
+    └── scroll-animations.ts
+
+
+
+GUIDES GO DESIGN SYSTEM - QUICK REFERENCE
+COLORS
+Primary: Forest Green (#2A5A3B), Sunset Orange (#FF6B35), Mountain Gray (#2D3142)
+Secondary: Sky Blue (#7DCFFF), Earth Brown (#8B6B4A), White (#FFFFFF)
+Utility: Success (#34C759), Warning (#FFB800), Error (#FF3B30), Info (#007AFF)
+TYPOGRAPHY
+Headings: Montserrat (48/36/24/20px)
+Body: Inter (18/16/14px)
+Base: 16px/24px
+SPACING
+Base unit: 8px
+Scale: 4px → 64px (xs to 3xl)
+BREAKPOINTS
+Mobile: 320px
+Tablet: 768px
+Desktop: 1024px
+Wide: 1200px+
+KEY COMPONENTS
+
+Buttons: Orange bg/White text (Primary), Green border/transparent bg (Secondary)
+Cards: White bg, 12px radius, subtle shadow
+Nav: 72px height, sticky, white bg
+Icons: 24x24px, rounded style
+
+ANIMATIONS
+Transitions: 0.2-0.5s ease
+Hover: Scale 1.02 on cards
+Scroll: Smooth parallax effects
