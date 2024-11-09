@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <Features/>
       <SocialProof />
-      <FeaturesBreakdown />
+      {/* <FeaturesBreakdown /> */}
       <CommunityImpact />
       <SafetyTrust />
       <AppShowcase />

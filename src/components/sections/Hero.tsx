@@ -10,17 +10,18 @@ export function Hero() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden">
       {/* Enhanced background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2A5A3B]/20 via-[#7DCFFF]/10 to-[#FF6B35]/10 -z-10" />
+      <div className="absolute inset-0  -z-10" />
       
       {/* Enhanced decorative elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-[5%] w-96 h-96 bg-[#7DCFFF]/20 rounded-full blur-3xl animate-pulse" />
+        {/* Removing or commenting out the background color elements */}
+        {/* <div className="absolute top-20 left-[5%] w-96 h-96 bg-[#7DCFFF]/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-[#FF6B35]/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-[20%] w-72 h-72 bg-[#8B6B4A]/10 rounded-full blur-2xl" />
+        <div className="absolute top-40 right-[20%] w-72 h-72 bg-[#8B6B4A]/10 rounded-full blur-2xl" /> */}
       </div>
 
       {/* Content container - adjusted padding */}
-      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-32 lg:pt-40">
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-32 lg:pt-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left column - Improved spacing */}
           <motion.div className="text-center lg:text-left space-y-8">
@@ -28,7 +29,7 @@ export function Hero() {
               {/* Updated heading with gradient text */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Turn Every Adventure into a{" "}
-                <span className="bg-gradient-to-r from-[#2A5A3B] to-[#FF6B35] text-transparent bg-clip-text">
+                <span className="text-[#2A5A3B]">
                   Social Quest
                 </span>
               </h1>
@@ -38,8 +39,31 @@ export function Hero() {
                 and explorers earn real rewards. Available now on iOS and Android.
               </p>
 
-              {/* Social proof section - adjusted spacing */}
+              {/* Buttons section */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                >
+                  <Download className="w-6 h-6" />
+                  Download App
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-2 border-[#2A5A3B] text-[#2A5A3B] hover:bg-[#2A5A3B] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
+                >
+                  Become a Guide
+                  <ArrowRight className="w-6 h-6" />
+                </Button>
+              </div>
+
+              {/* Social proof section */}
               <div className="flex flex-col space-y-8">
+                <motion.p className="text-sm text-[#2D3142]/70">
+                  Join 10,000+ adventure seekers and guides already on the platform
+                </motion.p>
+
                 <div className="flex flex-wrap justify-center lg:justify-start gap-8">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-3">
@@ -82,29 +106,6 @@ export function Hero() {
                     className="h-[40px] w-auto"
                   />
                 </div>
-
-                <motion.p className="text-sm text-[#2D3142]/70">
-                  Join 10,000+ adventure seekers and guides already on the platform
-                </motion.p>
-              </div>
-
-              {/* Buttons - enhanced styling */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all"
-                >
-                  <Download className="w-5 h-5" />
-                  Download App
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-2 border-[#2A5A3B] text-[#2A5A3B] hover:bg-[#2A5A3B] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all"
-                >
-                  Become a Guide
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
               </div>
             </motion.div>
           </motion.div>
@@ -141,6 +142,7 @@ export function Hero() {
                 <div className="space-y-1">
                   <p className="font-medium text-sm text-[#2D3142]">Sarah Miller</p>
                   <p className="text-xs text-[#2D3142]/60">Mountain Guide</p>
+                  <p className="text-xs text-[#2A5A3B] font-medium">5+ Years Experience</p>
                 </div>
               </div>
             </motion.div>
@@ -166,6 +168,7 @@ export function Hero() {
                 <div className="space-y-1">
                   <p className="font-medium text-sm text-[#2D3142]">Mike Chen</p>
                   <p className="text-xs text-[#2D3142]/60">Adventure Seeker</p>
+                  <p className="text-xs text-[#FF6B35] font-medium">12 Adventures Completed</p>
                 </div>
               </div>
             </motion.div>

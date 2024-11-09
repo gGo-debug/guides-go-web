@@ -37,11 +37,14 @@ export function Features() {
   return (
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
-        <h2 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-semibold text-mountain-gray">
-          Why Adventurers Choose Guides GO
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
+          Why Adventurers{" "}
+          <span className="text-[#2A5A3B]">
+            Choose Guides GO
+          </span>
         </h2>
 
-        <p className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-mountain-gray/80 text-center">
+        <p className="text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-center font-medium">
           Join thousands of explorers discovering extraordinary experiences with verified local guides.
         </p>
       </div>
