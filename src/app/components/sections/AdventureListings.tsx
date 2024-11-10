@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -62,10 +62,23 @@ function AdventureListings() {
   ];
 
   return (
-    <section className="relative px-4 py-12 w-full ">
-      <div className="absolute inset-x-0 top-0 h-32  -mt-32" />
+    <section className="relative px-4 py-12 w-full">
+      <div className="absolute inset-x-0 top-0 h-32 -mt-32" />
       
       <div className="relative max-w-7xl mx-auto bg-transparent p-4 rounded-lg">
+        <div className="px-8 mb-12">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
+            Choose Your Own {" "}
+            <span className="text-[#2A5A3B]">
+              Adventures
+            </span>
+          </h2>
+
+          <p className="text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-center font-medium">
+            Discover unique experiences curated by our expert local guides
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {adventures.map((adventure, index) => (
             <motion.div
@@ -76,11 +89,11 @@ function AdventureListings() {
               className="shadow-lg"
             >
               <Card className="group overflow-hidden border-2 border-transparent hover:border-forest-green/20 transition-all duration-300 bg-gradient-to-br from-white via-gray-50/50 to-gray-100/30 cursor-pointer">
-                <div className="relative">
+                <div className="relative h-56">
                   <img
                     src={adventure.image}
                     alt={adventure.title}
-                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     width={400}
                     height={300}
@@ -111,7 +124,7 @@ function AdventureListings() {
                         <h4 className="font-medium text-sm">{adventure.host.name}</h4>
                         <Badge 
                           variant="outline" 
-                          className="text-xs px-2 py-0.5 bg-forest-green/5 text-forest-green border-forest-green/20"
+                          className="text-xs px-2 py-0.5 bg-white text-forest-green border-forest-green/20"
                         >
                           {adventure.host.badgeText}
                         </Badge>

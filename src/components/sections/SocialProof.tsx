@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 interface Testimonial {
   id: number;
@@ -44,6 +45,15 @@ const testimonials: Testimonial[] = [
     location: "Lisbon, Portugal"
   }
 ];
+
+// Update the movingTestimonials to include the ratings
+const movingTestimonials = testimonials.map(t => ({
+  quote: t.content,
+  name: t.name,
+  title: `${t.role} • ${t.location}`,
+  image: t.image,
+  rating: t.rating
+}));
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
@@ -95,7 +105,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function SocialProof() {
   return (
-    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-24">
+    <section className="w-full bg-[#2A5A3B] py-24 rounded-[50px]">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,19 +114,32 @@ export default function SocialProof() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-mountain-gray mb-4">
-            Real Stories from the Guides GO Community
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+            Real Stories from the{" "}
+            <span className="text-[#FFD702]">
+              Guides GO Community
+            </span>
           </h2>
-          <p className="text-lg text-mountain-gray/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6">
             Join thousands of adventurers and guides who are already transforming their outdoor experiences
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Add the infinite moving cards before the grid */}
+        <div className="mb-16">
+          <InfiniteMovingCards
+            items={movingTestimonials}
+            direction="right"
+            speed="slow"
+            className="py-4"
+          />
+        </div>
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
-        </div>
+        </div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,10 +149,10 @@ export default function SocialProof() {
           className="mt-16 text-center"
         >
           <div className="flex flex-col items-center gap-4">
-            <p className="text-2xl font-semibold text-mountain-gray">
+            <p className="text-2xl font-semibold text-white">
               Join 10,000+ adventure seekers
             </p>
-            <div className="flex items-center gap-2 text-mountain-gray/80">
+            <div className="flex items-center gap-2 text-white/80">
               <span className="font-medium">Platform Rating</span>
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (

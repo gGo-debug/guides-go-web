@@ -21,7 +21,7 @@ export default function Home() {
       {/* <FeaturesBreakdown /> */}
       <CommunityImpact />
       <SafetyTrust />
-      <AppShowcase />
+      {/* <AppShowcase /> */}
       <DownloadSection />
       <GuideRecruitment />
       <FinalCTA />

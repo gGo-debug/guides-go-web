@@ -53,7 +53,7 @@ const initiatives = [
 
 export default function CommunityImpact() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-green-50">
+    <section className="py-24 bg-gradient-to-b from-white via-green-100 to-white w-full">
       <Container>
         <div className="space-y-16">
           {/* Header */}
@@ -127,17 +127,17 @@ export default function CommunityImpact() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative h-full rounded-2xl overflow-hidden"
+              className="relative h-full rounded-2xl overflow-hidden cursor-pointer group"
             >
               <Image
                 src="/adventure/adventure-group.jpg"
                 alt="Community impact through sustainable tourism"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end">
                 <div className="p-8 text-white">
                   <p className="text-lg font-medium">
                     "Through Guides GO, we've been able to preserve our traditional practices while 
