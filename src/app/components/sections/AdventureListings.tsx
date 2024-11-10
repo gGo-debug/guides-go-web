@@ -68,8 +68,8 @@ function AdventureListings() {
       <div className="relative max-w-7xl mx-auto bg-transparent p-4 rounded-lg">
         <div className="px-8 mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
-            Choose Your Own {" "}
-            <span className="text-[#2A5A3B]">
+            Choose Your Own{" "}
+            <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
               Adventures
             </span>
           </h2>

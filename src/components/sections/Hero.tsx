@@ -8,15 +8,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] overflow-hidden pb-20 bg-gradient-to-t from-[#2A5A3B]/100 w-full via-white rounded-b-[48px]">
-      {/* Enhanced background gradient */}
-      <div className="absolute inset-0  -z-10" />
-      
-      {/* Enhanced decorative elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-[5%] w-96 h-96 bg-[#7DCFFF]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-[#FF6B35]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-[20%] w-72 h-72 bg-[#2A5A3B]/5 rounded-full blur-2xl" />
+    <section className="relative min-h-[80vh] overflow-hidden py-20 w-full rounded-b-[48px]">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/hero-bg.jpg")',
+          backgroundBlendMode: 'overlay',
+        }}
+      >
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content container - adjusted padding */}
@@ -26,14 +28,14 @@ export function Hero() {
           <motion.div className="text-center lg:text-left space-y-8">
             <motion.div className="space-y-8">
               {/* Updated heading with gradient text */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                 Turn Every Adventure into a{" "}
-                <span className="text-[#2A5A3B]">
+                <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] inline-block text-transparent bg-clip-text">
                   Social Quest
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto lg:mx-0">
                 Join the first adventure platform where guides become influencers 
                 and explorers earn real rewards. Available now on iOS and Android.
               </p>
@@ -59,7 +61,7 @@ export function Hero() {
 
               {/* Social proof section */}
               <div className="flex flex-col space-y-8">
-                <motion.p className="text-sm text-[#2D3142]/70">
+                <motion.p className="text-sm text-white/70">
                   Join 10,000+ adventure seekers and guides already on the platform
                 </motion.p>
 
@@ -73,7 +75,7 @@ export function Hero() {
                         </Avatar>
                       ))}
                     </div>
-                    <span className="text-sm text-[#2D3142]/80">+10k Members</span>
+                    <span className="text-sm text-white/80">+10k Members</span>
                   </div>
                   
                   <div className="flex items-center gap-2">
@@ -84,7 +86,7 @@ export function Hero() {
                         </svg>
                       ))}
                     </div>
-                    <span className="text-sm text-[#2D3142]/80">4.9/5 Rating</span>
+                    <span className="text-sm text-white/80">4.9/5 Rating</span>
                   </div>
                 </div>
 
@@ -116,7 +118,9 @@ export function Hero() {
               alt="Guides Go App Interface"
               width={720}
               height={800}
-              className="w-full h-auto object-contain rounded-2xl shadow-2xl"
+              className="w-full h-auto object-contain rounded-2xl shadow-2xl 
+                 
+                drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
               priority
             />
 

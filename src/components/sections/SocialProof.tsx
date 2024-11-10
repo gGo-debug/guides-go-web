@@ -105,8 +105,20 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function SocialProof() {
   return (
-    <section className="w-full bg-[#2A5A3B] py-24 rounded-[50px]">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="w-full relative py-24 rounded-3xl overflow-hidden">
+      {/* Background and overlay remain the same */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/kayak.jpg')",
+          backgroundBlendMode: 'overlay',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      {/* Top section */}
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,33 +126,30 @@ export default function SocialProof() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
-            Real Stories from the{" "}
-            <span className="text-[#FFD702]">
-              Guides GO Community
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-white">
+            Real Stories from{" "}
+            <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
+              Our Community
             </span>
           </h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6">
             Join thousands of adventurers and guides who are already transforming their outdoor experiences
           </p>
         </motion.div>
+      </div>
 
-        {/* Add the infinite moving cards before the grid */}
-        <div className="mb-16">
-          <InfiniteMovingCards
-            items={movingTestimonials}
-            direction="right"
-            speed="slow"
-            className="py-4"
-          />
-        </div>
+      {/* Middle section - full width */}
+      <div className="relative z-10">
+        <InfiniteMovingCards
+          items={movingTestimonials}
+          direction="right"
+          speed="slow"
+          className="py-4"
+        />
+      </div>
 
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-          ))}
-        </div> */}
-
+      {/* Bottom section */}
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

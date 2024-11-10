@@ -3,8 +3,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
 export function Features() {
   const features = [
@@ -39,7 +37,7 @@ export function Features() {
       <div className="px-8">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
           Why Adventurers{" "}
-          <span className="text-[#2A5A3B]">
+          <span className="text-[#FF6B35]">
             Choose Guides GO
           </span>
         </h2>
