@@ -3,6 +3,8 @@
 import { Container } from "@/components/ui/container";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export function DownloadSection() {
   return (
@@ -42,6 +44,35 @@ export function DownloadSection() {
                 Join our growing community of adventurers and guides across the globe.
                 Experience local expertise wherever you go.
               </p>
+            </div>
+
+            {/* Add Download Buttons */}
+            <div className="space-y-6">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+              >
+                <Download className="w-6 h-6" />
+                Download App
+              </Button>
+
+              {/* App store badges */}
+              <div className="flex items-center gap-4 mt-4">
+                <Image
+                  src="/badges/appstore.svg"
+                  alt="Download on App Store"
+                  width={140}
+                  height={40}
+                  className="h-[40px] w-auto"
+                />
+                <Image
+                  src="/badges/googleplay.png"
+                  alt="Get it on Google Play"
+                  width={140}
+                  height={40}
+                  className="h-[40px] w-auto"
+                />
+              </div>
             </div>
 
             {/* Stats - Updated for dark background */}
