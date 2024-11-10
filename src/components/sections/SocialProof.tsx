@@ -105,18 +105,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
 export default function SocialProof() {
   return (
-    <section className="w-full relative py-24 rounded-3xl overflow-hidden">
-      {/* Background and overlay remain the same */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/kayak.jpg')",
-          backgroundBlendMode: 'overlay',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
-
+    <section className="w-full relative py-24 rounded-3xl overflow-hidden bg-gradient-to-b from-white via-[#FF6E35]/5 to-white">
       {/* Top section */}
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div
@@ -126,13 +115,13 @@ export default function SocialProof() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-mountain-gray">
             Real Stories from{" "}
             <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
               Our Community
             </span>
           </h2>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6">
+          <p className="text-lg text-mountain-gray/80 max-w-2xl mx-auto mt-6">
             Join thousands of adventurers and guides who are already transforming their outdoor experiences
           </p>
         </motion.div>
@@ -158,10 +147,10 @@ export default function SocialProof() {
           className="mt-16 text-center"
         >
           <div className="flex flex-col items-center gap-4">
-            <p className="text-2xl font-semibold text-white">
+            <p className="text-2xl font-semibold text-mountain-gray">
               Join 10,000+ adventure seekers
             </p>
-            <div className="flex items-center gap-2 text-white/80">
+            <div className="flex items-center gap-2 text-mountain-gray/80">
               <span className="font-medium">Platform Rating</span>
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (

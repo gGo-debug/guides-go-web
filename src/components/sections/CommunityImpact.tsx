@@ -53,7 +53,7 @@ const initiatives = [
 
 export default function CommunityImpact() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-green-100 to-white w-full">
+    <section className="py-24 bg-white w-full">
       <Container>
         <div className="space-y-16">
           {/* Header */}

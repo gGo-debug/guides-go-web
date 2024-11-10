@@ -6,10 +6,21 @@ import Image from "next/image";
 
 export function DownloadSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section className="relative w-full overflow-hidden">
+      {/* Background setup similar to Hero */}
+      <div 
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat overflow-hidden rounded-3xl"
+        style={{
+          backgroundImage: 'url("/app-bg.jpg")',
+          backgroundBlendMode: 'overlay',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
       <Container className="relative py-24">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
-          {/* Left Content */}
+          {/* Left Content - Updated styling */}
           <motion.div 
             className="space-y-10"
             initial={{ opacity: 0, y: 20 }}
@@ -18,33 +29,35 @@ export function DownloadSection() {
             transition={{ duration: 0.5 }}
           >
             <div className="space-y-8">
-              <span className="inline-block px-4 py-2 bg-[#2A5A3B]/10 text-[#2A5A3B] rounded-full text-sm font-medium">
+              <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-medium">
                 Global Community
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white">
                 Connect Worldwide with{" "}
-                <span className="text-[#2A5A3B]">Local Guides</span>
+                <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] inline-block text-transparent bg-clip-text">
+                  Local Guides
+                </span>
               </h2>
-              <p className="text-lg text-[#2D3142]/80 max-w-xl">
+              <p className="text-lg text-white/80 max-w-xl">
                 Join our growing community of adventurers and guides across the globe.
                 Experience local expertise wherever you go.
               </p>
             </div>
 
-            {/* Stats - Updated with consistent styling */}
-            <div className="pt-8 border-t border-[#2D3142]/10">
+            {/* Stats - Updated for dark background */}
+            <div className="pt-8 border-t border-white/10">
               <div className="flex gap-12">
                 <div>
-                  <p className="text-3xl font-bold text-[#2A5A3B]">50+</p>
-                  <p className="text-sm text-[#2D3142]/70">Countries</p>
+                  <p className="text-3xl font-bold text-[#FF6B35]">50+</p>
+                  <p className="text-sm text-white/70">Countries</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#2A5A3B]">1K+</p>
-                  <p className="text-sm text-[#2D3142]/70">Local Guides</p>
+                  <p className="text-3xl font-bold text-[#FF6B35]">1K+</p>
+                  <p className="text-sm text-white/70">Local Guides</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#2A5A3B]">10K+</p>
-                  <p className="text-sm text-[#2D3142]/70">Adventures</p>
+                  <p className="text-3xl font-bold text-[#FF6B35]">10K+</p>
+                  <p className="text-sm text-white/70">Adventures</p>
                 </div>
               </div>
             </div>
@@ -59,7 +72,7 @@ export function DownloadSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Image
-              src="/images/app-interface.png"
+              src="/iphone.png"
               alt="Guides Go App Interface"
               fill
               className="object-contain"

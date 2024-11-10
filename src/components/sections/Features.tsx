@@ -33,39 +33,59 @@ export function Features() {
   ];
 
   return (
-    <div className="relative z-20 py-10  max-w-7xl mx-auto">
-      <div className="px-8">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
+    <section className="w-full relative py-24 rounded-3xl overflow-hidden">
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/kayak.jpg')",
+          backgroundBlendMode: 'overlay',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      <div className="relative z-20 container mx-auto px-4 max-w-7xl">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center text-white">
           Why Adventurers{" "}
-          <span className="text-[#FF6B35]">
+          <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
             Choose Guides GO
           </span>
         </h2>
 
-        <p className="text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-center font-medium">
+        <p className="text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-white/80 text-center font-medium">
           Join thousands of explorers discovering extraordinary experiences with verified local guides.
         </p>
-      </div>
 
-      <div className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 rounded-xl border border-forest-green/20">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-              <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className="h-full w-full">{feature.skeleton}</div>
-            </FeatureCard>
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 rounded-xl overflow-hidden">
+            {features.map((feature) => (
+              <FeatureCard 
+                key={feature.title} 
+                className={cn(
+                  feature.className,
+                  "border-forest-green/10" // lighter border color
+                )}
+              >
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+                <div className="h-full w-full">{feature.skeleton}</div>
+              </FeatureCard>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
 // Helper Components
 const FeatureCard = ({ children, className }: { children?: React.ReactNode; className?: string }) => {
   return (
-    <div className={cn(`p-4 sm:p-8 relative overflow-hidden group hover:bg-forest-green/5 transition-colors`, className)}>
+    <div className={cn(
+      `p-4 sm:p-8 relative overflow-hidden group`,
+      `bg-white/95 hover:bg-white transition-colors`,
+      className
+    )}>
       {children}
     </div>
   );
@@ -73,7 +93,7 @@ const FeatureCard = ({ children, className }: { children?: React.ReactNode; clas
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <h3 className="text-xl md:text-2xl font-semibold text-forest-green mb-2">
+    <h3 className="text-xl md:text-2xl font-semibold text-mountain-gray mb-2">
       {children}
     </h3>
   );
