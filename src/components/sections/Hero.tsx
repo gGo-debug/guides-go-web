@@ -8,16 +8,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
+    <section className="relative min-h-[80vh] overflow-hidden pb-20 bg-gradient-to-t from-[#2A5A3B]/100 w-full via-white rounded-b-[48px]">
       {/* Enhanced background gradient */}
       <div className="absolute inset-0  -z-10" />
       
       {/* Enhanced decorative elements */}
       <div className="absolute inset-0 -z-10">
-        {/* Removing or commenting out the background color elements */}
-        {/* <div className="absolute top-20 left-[5%] w-96 h-96 bg-[#7DCFFF]/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-[#FF6B35]/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-[20%] w-72 h-72 bg-[#8B6B4A]/10 rounded-full blur-2xl" /> */}
+        <div className="absolute top-20 left-[5%] w-96 h-96 bg-[#7DCFFF]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-[#FF6B35]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-40 right-[20%] w-72 h-72 bg-[#2A5A3B]/5 rounded-full blur-2xl" />
       </div>
 
       {/* Content container - adjusted padding */}

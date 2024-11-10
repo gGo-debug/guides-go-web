@@ -29,7 +29,6 @@ app/
 │   ├── ui/
 │   │   ├── Button.tsx
 │   │   ├── Card.tsx
-│   │   ├── Container.tsx
 │   │   └── Typography.tsx
 │   └── shared/
 │       ├── TestimonialCard.tsx

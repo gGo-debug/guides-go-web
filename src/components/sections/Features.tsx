@@ -35,7 +35,7 @@ export function Features() {
   ];
 
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
+    <div className="relative z-20 py-10  max-w-7xl mx-auto">
       <div className="px-8">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
           Why Adventurers{" "}
