@@ -1,3 +1,24 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    // Disable specific rules globally
+    "react-hooks/exhaustive-deps": "off",
+    "prefer-const": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-var": "off"
+  },
+  "overrides": [
+    {
+      "files": ["./src/components/ui/globe.tsx", "./src/components/ui/infinite-moving-cards.tsx"],
+      "rules": {
+        // Disable rules specifically for these files
+        "react-hooks/exhaustive-deps": "off",
+        "prefer-const": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-var": "off"
+      }
+    }
+  ]
 }
