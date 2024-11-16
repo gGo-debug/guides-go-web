@@ -5,12 +5,12 @@
 @layer base {
   :root {
     /* Primary Colors */
-    --accent: 142 54% 26%; /* #2A5A3B Forest Green */
-    --accent-foreground: 0 0% 100%;
+    --primary: 142 54% 26%; /* #2A5A3B Forest Green */
+    --primary-foreground: 0 0% 100%;
     
     /* Secondary/Accent */
-    --primary: 16 100% 60%; /* #FF6B35 Sunset Orange */
-    --primary-foreground: 0 0% 100%;
+    --accent: 16 100% 60%; /* #FF6B35 Sunset Orange */
+    --accent-foreground: 0 0% 100%;
     
     /* UI Colors */
     --background: 0 0% 100%; /* #FFFFFF */
