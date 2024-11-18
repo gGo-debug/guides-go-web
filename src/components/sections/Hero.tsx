@@ -10,11 +10,11 @@ export function Hero() {
   return (
     <section className="relative min-h-[80vh] overflow-hidden py-20 w-full rounded-b-[48px]">
       {/* Background image */}
-      <div 
+      <div
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/hero-bg.jpg")',
-          backgroundBlendMode: 'overlay',
+          backgroundBlendMode: "overlay",
         }}
       >
         {/* Dark overlay for better text readability */}
@@ -30,27 +30,28 @@ export function Hero() {
               {/* Updated heading with gradient text */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                 Turn Every Adventure into a{" "}
-                <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] inline-block text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
                   Social Quest
                 </span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto lg:mx-0">
-                Join the first adventure platform where guides become influencers 
-                and explorers earn real rewards. Available now on iOS and Android.
+                Join the first adventure platform where guides become
+                influencers and explorers earn real rewards. Available now on
+                iOS and Android.
               </p>
 
               {/* Buttons section */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
+                <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                  className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
                 >
                   <Download className="w-6 h-6" />
                   Download App
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="lg"
                   className="border-2 border-[#2A5A3B] text-[#2A5A3B] hover:bg-[#2A5A3B] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
                 >
@@ -61,34 +62,46 @@ export function Hero() {
 
               {/* Social proof section */}
               <div className="flex flex-col space-y-8">
-                <motion.p className="text-sm text-white/70">
-                  Join 10,000+ adventure seekers and guides already on the platform
+                {/* <motion.p className="text-sm text-white/70">
+                  Join 10,000+ adventure seekers and guides already on the
+                  platform
                 </motion.p>
 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-8">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-3">
                       {[1, 2, 3, 4].map((i) => (
-                        <Avatar key={i} className="border-2 border-white w-8 h-8">
-                          <AvatarImage src={`/avatars/avatar${i}.png`} alt={`User ${i}`} />
+                        <Avatar
+                          key={i}
+                          className="border-2 border-white w-8 h-8"
+                        >
+                          <AvatarImage
+                            src={`/avatars/avatar${i}.png`}
+                            alt={`User ${i}`}
+                          />
                           <AvatarFallback>U{i}</AvatarFallback>
                         </Avatar>
                       ))}
                     </div>
                     <span className="text-sm text-white/80">+10k Members</span>
                   </div>
-                  
+
                   <div className="flex items-center gap-2">
                     <div className="flex text-[#FFD700]">
                       {[1, 2, 3, 4, 5].map((i) => (
-                        <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          key={i}
+                          className="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
                     </div>
                     <span className="text-sm text-white/80">4.9/5 Rating</span>
                   </div>
-                </div>
+                </div> */}
 
                 {/* App store badges - adjusted spacing and alignment */}
                 <div className="flex items-center gap-4 justify-center lg:justify-start mt-4 mb-6">
@@ -126,40 +139,47 @@ export function Hero() {
 
             {/* Floating elements */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, -10, 0],
-                rotate: [0, 2, 0]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute -top-8 right-12 p-4 bg-white rounded-xl shadow-lg"
-            >
-              <div className="flex items-center gap-3">
-                <Avatar>
-                  <AvatarImage src="/avatars/sarahmiller.png" alt="Sarah Miller" />
-                  <AvatarFallback>SM</AvatarFallback>
-                </Avatar>
-                <div className="space-y-1">
-                  <p className="font-medium text-sm text-[#2D3142]">Sarah Miller</p>
-                  <p className="text-xs text-[#2D3142]/60">Mountain Guide</p>
-                  <p className="text-xs text-[#2A5A3B] font-medium">5+ Years Experience</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              animate={{ 
-                y: [0, 10, 0],
-                rotate: [0, -2, 0]
+                rotate: [0, 2, 0],
               }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 0.5
+              }}
+              className="absolute -top-8 right-12 p-4 bg-white rounded-xl shadow-lg"
+            >
+              <div className="flex items-center gap-3">
+                <Avatar>
+                  <AvatarImage
+                    src="/avatars/sarahmiller.png"
+                    alt="Sarah Miller"
+                  />
+                  <AvatarFallback>SM</AvatarFallback>
+                </Avatar>
+                <div className="space-y-1">
+                  <p className="font-medium text-sm text-[#2D3142]">
+                    Sarah Miller
+                  </p>
+                  <p className="text-xs text-[#2D3142]/60">Mountain Guide</p>
+                  <p className="text-xs text-[#2A5A3B] font-medium">
+                    5+ Years Experience
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{
+                y: [0, 10, 0],
+                rotate: [0, -2, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
               }}
               className="absolute -bottom-4 -left-4 p-4 bg-white rounded-xl shadow-lg"
             >
@@ -169,9 +189,13 @@ export function Hero() {
                   <AvatarFallback>MC</AvatarFallback>
                 </Avatar>
                 <div className="space-y-1">
-                  <p className="font-medium text-sm text-[#2D3142]">Mike Chen</p>
+                  <p className="font-medium text-sm text-[#2D3142]">
+                    Mike Chen
+                  </p>
                   <p className="text-xs text-[#2D3142]/60">Adventure Seeker</p>
-                  <p className="text-xs text-[#FF6B35] font-medium">12 Adventures Completed</p>
+                  <p className="text-xs text-[#FF6B35] font-medium">
+                    12 Adventures Completed
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -182,4 +206,5 @@ export function Hero() {
   );
 }
 
-export default Hero; 
+export default Hero;
+
