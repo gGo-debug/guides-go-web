@@ -10,11 +10,11 @@ export function DownloadSection() {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background setup similar to Hero */}
-      <div 
+      <div
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat overflow-hidden rounded-3xl"
         style={{
           backgroundImage: 'url("/app-bg.jpg")',
-          backgroundBlendMode: 'overlay',
+          backgroundBlendMode: "overlay",
         }}
       >
         <div className="absolute inset-0 bg-black/60" />
@@ -23,7 +23,7 @@ export function DownloadSection() {
       <Container className="relative py-24">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Left Content - Updated styling */}
-          <motion.div 
+          <motion.div
             className="space-y-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,21 +36,21 @@ export function DownloadSection() {
               </span>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white">
                 Connect Worldwide with{" "}
-                <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] inline-block text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
                   Local Guides
                 </span>
               </h2>
               <p className="text-lg text-white/80 max-w-xl">
-                Join our growing community of adventurers and guides across the globe.
-                Experience local expertise wherever you go.
+                Join our growing community of adventurers and guides across the
+                globe. Experience local expertise wherever you go.
               </p>
             </div>
 
             {/* Add Download Buttons */}
             <div className="space-y-6">
-              <Button 
+              <Button
                 size="lg"
-                className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
               >
                 <Download className="w-6 h-6" />
                 Download App
@@ -79,15 +79,15 @@ export function DownloadSection() {
             <div className="pt-8 border-t border-white/10">
               <div className="flex gap-12">
                 <div>
-                  <p className="text-3xl font-bold text-[#FF6B35]">50+</p>
+                  <p className="text-3xl font-bold text-[#0E9871]">50+</p>
                   <p className="text-sm text-white/70">Experiences</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#FF6B35]">1K+</p>
+                  <p className="text-3xl font-bold text-[#0E9871]">1K+</p>
                   <p className="text-sm text-white/70">Local Guides</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-[#FF6B35]">10K+</p>
+                  <p className="text-3xl font-bold text-[#0E9871]">10K+</p>
                   <p className="text-sm text-white/70">Adventures</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export function DownloadSection() {
           </motion.div>
 
           {/* Right Content - Mock iPhone & App Interface */}
-          <motion.div 
+          <motion.div
             className="relative h-[600px] w-full flex items-center justify-center"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -117,4 +117,5 @@ export function DownloadSection() {
   );
 }
 
-export default DownloadSection; 
+export default DownloadSection;
+

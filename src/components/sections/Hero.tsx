@@ -53,7 +53,7 @@ export function Hero() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-[#2A5A3B] text-[#2A5A3B] hover:bg-[#2A5A3B] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
+                  className="border-2 border-none text-[#2A5A3B] hover:bg-[#39CF8D] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
                 >
                   Become a Guide
                   <ArrowRight className="w-6 h-6" />
@@ -104,7 +104,7 @@ export function Hero() {
                 </div> */}
 
                 {/* App store badges - adjusted spacing and alignment */}
-                <div className="flex items-center gap-4 justify-center lg:justify-start mt-4 mb-6">
+                {/* <div className="flex items-center gap-4 justify-center lg:justify-start mt-4 mb-6">
                   <Image
                     src="/badges/appstore.svg"
                     alt="Download on App Store"
@@ -119,7 +119,7 @@ export function Hero() {
                     height={40}
                     className="h-[40px] w-auto"
                   />
-                </div>
+                </div> */}
               </div>
             </motion.div>
           </motion.div>
@@ -193,7 +193,7 @@ export function Hero() {
                     Mike Chen
                   </p>
                   <p className="text-xs text-[#2D3142]/60">Adventure Seeker</p>
-                  <p className="text-xs text-[#FF6B35] font-medium">
+                  <p className="text-xs text-[#0E9871] font-medium">
                     12 Adventures Completed
                   </p>
                 </div>

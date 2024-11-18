@@ -9,22 +9,22 @@ const benefits = [
   {
     title: "Build your brand",
     description: "Create your unique identity and grow your online presence",
-    emoji: "🎯"
+    emoji: "🎯",
   },
   {
     title: "Set your own schedule",
     description: "Work when you want, where you want with full flexibility",
-    emoji: "📅"
+    emoji: "📅",
   },
   {
     title: "Grow your following",
     description: "Connect with adventure seekers and build your community",
-    emoji: "🌱"
+    emoji: "🌱",
   },
   {
     title: "Earn more",
     description: "Unlock multiple revenue streams through guided adventures",
-    emoji: "💰"
+    emoji: "💰",
   },
 ];
 
@@ -32,7 +32,7 @@ export function GuideRecruitment() {
   return (
     <section className="relative min-h-[80vh] overflow-hidden py-20 w-full">
       {/* Background gradient - updated to orange */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FF6B35]/10 via-[#FF6B35]/5 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0E9871]/10 via-[#0E9871]/5 to-transparent" />
 
       {/* Content container */}
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 pt-20">
@@ -40,17 +40,18 @@ export function GuideRecruitment() {
           {/* Left column */}
           <motion.div className="text-center lg:text-left space-y-8">
             <motion.div className="space-y-8">
-              <span className="text-[#FF6B35] font-semibold tracking-wide uppercase text-sm">
+              <span className="text-[#0E9871] font-semibold tracking-wide uppercase text-sm">
                 Become a Guide
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#2D3142]">
                 Ready to Share Your{" "}
-                <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] inline-block text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
                   Expertise?
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
-                Join our community of professional guides and turn your passion into profit.
+                Join our community of professional guides and turn your passion
+                into profit.
               </p>
 
               {/* Benefits grid */}
@@ -66,7 +67,11 @@ export function GuideRecruitment() {
                     <Card className="p-8 h-full hover:scale-[1.02] hover:shadow-xl transition-all duration-300 border-none bg-white/80 backdrop-blur-sm">
                       <div className="space-y-4">
                         <div className="flex items-center justify-start">
-                          <span className="text-2xl" role="img" aria-label={benefit.title}>
+                          <span
+                            className="text-2xl"
+                            role="img"
+                            aria-label={benefit.title}
+                          >
                             {benefit.emoji}
                           </span>
                         </div>
@@ -86,13 +91,13 @@ export function GuideRecruitment() {
               <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white px-10 py-7 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+                  className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white px-10 py-7 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                 >
                   Apply to Become a Guide
                 </Button>
-                <p className="text-sm text-[#2D3142]/60 max-w-[200px]">
-                  Join 500+ professional guides already on our platform
-                </p>
+                {/* <p className="text-sm text-[#2D3142]/60 max-w-[200px]"> */}
+                {/*   Join 500+ professional guides already on our platform */}
+                {/* </p> */}
               </div>
             </motion.div>
           </motion.div>
@@ -116,17 +121,17 @@ export function GuideRecruitment() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-              
+
               {/* Floating stats card */}
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   y: [0, -10, 0],
-                  rotate: [0, 2, 0]
+                  rotate: [0, 2, 0],
                 }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
                 className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg"
               >
@@ -136,7 +141,9 @@ export function GuideRecruitment() {
                     <p className="text-2xl font-bold text-[#2D3142]">4.9/5.0</p>
                   </div>
                   <div>
-                    <p className="text-sm text-[#2D3142]/70">Monthly Earnings</p>
+                    <p className="text-sm text-[#2D3142]/70">
+                      Monthly Earnings
+                    </p>
                     <p className="text-2xl font-bold text-[#2D3142]">$2.5k+</p>
                   </div>
                 </div>
@@ -149,4 +156,5 @@ export function GuideRecruitment() {
   );
 }
 
-export default GuideRecruitment; 
+export default GuideRecruitment;
+
