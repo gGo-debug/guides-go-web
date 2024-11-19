@@ -45,11 +45,11 @@ function AdventureListings() {
     },
     {
       id: 3,
-      title: "Desert Safari",
+      title: "Fly Fishing Trip",
       description:
-        "Experience the vast desert landscapes and enjoy traditional activities.",
-      image: "/adventure/desert.jpg",
-      location: "Sahara Desert",
+        "Learn how to fish fish with an expert guide.",
+      image: "/adventure/flyfish.jpg",
+      location: "Fraser river",
       duration: "8 hours",
       groupSize: "3-10 people",
       difficulty: "Moderate",

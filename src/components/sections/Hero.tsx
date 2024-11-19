@@ -31,7 +31,7 @@ export function Hero() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
                 Turn Every Adventure into a{" "}
                 <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
-                  Social Quest
+                  Learning Experience
                 </span>
               </h1>
 
