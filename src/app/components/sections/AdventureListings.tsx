@@ -47,7 +47,7 @@ function AdventureListings() {
       id: 3,
       title: "Fly Fishing Trip",
       description:
-        "Learn how to fish fish with an expert guide.",
+        "Learn how to Fly fish with an expert guide.",
       image: "/adventure/flyfish.jpeg",
       location: "Fraser river",
       duration: "8 hours",
