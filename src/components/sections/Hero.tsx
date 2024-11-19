@@ -36,9 +36,12 @@ export function Hero() {
               </h1>
 
               <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto lg:mx-0">
-                Join the first adventure platform where guides become
+                {/* Join the first adventure platform where guides become
                 influencers and explorers earn real rewards. Available now on
-                iOS and Android.
+                iOS and Android. */}
+                Discover unforgettable outdoor adventures 
+                with local guides across Canada, 
+                tailored just for you.
               </p>
 
               {/* Buttons section */}

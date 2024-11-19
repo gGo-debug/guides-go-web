@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | GuidesGo",
   },
   description:
-    "Join the first adventure platform where guides become influencers and explorers earn real rewards. Available now on iOS and Android.",
+  "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you. Available now on iOS and Android.",
   keywords: [
     "adventure platform",
     "travel guides",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "GuidesGo",
     title: "GuidesGo - Adventure Platform",
     description:
-      "Join the first adventure platform where guides become influencers and explorers earn real rewards.",
+    "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
     images: [
       {
         url: "/og-image.jpg",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GuidesGo - Adventure Platform",
     description:
-      "Join the first adventure platform where guides become influencers and explorers earn real rewards.",
+    "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
     images: ["/twitter-image.jpg"],
     creator: "@guidesgo",
   },
