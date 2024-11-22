@@ -3,6 +3,7 @@ export const navItems = [
   { label: 'About', href: '/about' },
   { label: 'Become a Guide', href: '/apply' },
   { label: 'Download App', href: '/download' },
+  { label: 'Join Waitlist', href: '/waitlist' },
 
 ] as const;
 
