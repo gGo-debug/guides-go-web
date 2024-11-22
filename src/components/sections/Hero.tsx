@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -46,6 +47,7 @@ export function Hero() {
 
               {/* Buttons section */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link href="/waitlist">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
@@ -53,6 +55,8 @@ export function Hero() {
                   <Download className="w-6 h-6" />
                   Download App
                 </Button>
+                </Link>
+                <Link href="/waitlist">
                 <Button
                   variant="outline"
                   size="lg"
@@ -61,6 +65,7 @@ export function Hero() {
                   Become a Guide
                   <ArrowRight className="w-6 h-6" />
                 </Button>
+                </Link>
               </div>
 
               {/* Social proof section */}
