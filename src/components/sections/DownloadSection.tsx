@@ -11,7 +11,7 @@ export function DownloadSection() {
     <section className="relative w-full overflow-hidden">
       {/* Background setup similar to Hero */}
       <div
-        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat overflow-hidden rounded-3xl"
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat overflow-hidden"
         style={{
           backgroundImage: 'url("/app-bg.jpg")',
           backgroundBlendMode: "overlay",
