@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Download, MapPin, MessageCircle, Calendar, Menu } from "lucide-react";
+import Link from "next/link";
 
 export function DownloadSection() {
   return (
@@ -48,6 +49,7 @@ export function DownloadSection() {
 
             {/* Add Download Buttons */}
             <div className="space-y-6">
+            <Link href="/waitlist">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
@@ -55,6 +57,7 @@ export function DownloadSection() {
                 <Download className="w-6 h-6" />
                 Download App
               </Button>
+            </Link>
 
               {/* App store badges */}
               <div className="flex items-center gap-4 mt-4">

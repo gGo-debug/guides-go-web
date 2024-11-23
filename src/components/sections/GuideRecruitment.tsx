@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 const benefits = [
   {
@@ -89,12 +90,14 @@ export function GuideRecruitment() {
 
               {/* CTA section */}
               <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
+              <Link href="/waitlist">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white px-10 py-7 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                 >
                   Apply to Become a Guide
                 </Button>
+              </Link>
                 {/* <p className="text-sm text-[#2D3142]/60 max-w-[200px]"> */}
                 {/*   Join 500+ professional guides already on our platform */}
                 {/* </p> */}
