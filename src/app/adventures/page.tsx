@@ -1,7 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import AdventureGrid from '@/components/adventures/AdventureGrid';
-import { AdventureFilters } from '@/components/adventures/AdventureFilters';
 import { Container } from '@/components/ui/container';
+import AdventureCard from '@/components/adventures/AdventureCard';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,24 +9,16 @@ export const metadata: Metadata = {
 };
 
 // Initialize Supabase client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function BookingPage() {
+export default async function AdventuresPage() {
   const { data: adventures } = await supabase
     .from('adventures')
-    .select(`
-      *,
-      guide:guide_id (
-        name,
-        profile_image,
-        experience_years
-      )
-    `)
+    .select('*')
     .eq('status', 'active')
-    .order('is_featured', { ascending: false });
+    .order('created_at', { ascending: false });
 
   return (
     <main className="min-h-screen py-20">
@@ -47,17 +38,14 @@ export default async function BookingPage() {
             </p>
           </div>
 
-          {/* Main content */}
-          <div className="grid lg:grid-cols-12 gap-8">
-            {/* Filters */}
-            <div className="lg:col-span-3">
-              <AdventureFilters />
-            </div>
-
-            {/* Adventures Grid */}
-            <div className="lg:col-span-9">
-              <AdventureGrid adventures={adventures || []} />
-            </div>
+          {/* Adventures Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {adventures?.map((adventure) => (
+              <AdventureCard 
+                key={adventure.id} 
+                adventure={adventure} 
+              />
+            ))}
           </div>
         </div>
       </Container>
