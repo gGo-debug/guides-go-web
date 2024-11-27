@@ -40,31 +40,30 @@ export function Hero() {
                 {/* Join the first adventure platform where guides become
                 influencers and explorers earn real rewards. Available now on
                 iOS and Android. */}
-                Discover unforgettable outdoor adventures 
-                with local guides across Canada, 
-                tailored just for you.
+                Discover unforgettable outdoor adventures with local guides
+                across Canada, tailored just for you.
               </p>
 
               {/* Buttons section */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/waitlist">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
-                >
-                  <Download className="w-6 h-6" />
-                  Download App
-                </Button>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                  >
+                    <Download className="w-6 h-6" />
+                    Download App
+                  </Button>
                 </Link>
                 <Link href="/waitlist">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-none text-[#2A5A3B] hover:bg-[#39CF8D] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
-                >
-                  Become a Guide
-                  <ArrowRight className="w-6 h-6" />
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-2 border-none text-[#2A5A3B] hover:bg-[#39CF8D] hover:text-white gap-2 shadow-md hover:shadow-lg transition-all px-8 py-6 text-lg"
+                  >
+                    Book Now
+                    <ArrowRight className="w-6 h-6" />
+                  </Button>
                 </Link>
               </div>
 
@@ -215,4 +214,3 @@ export function Hero() {
 }
 
 export default Hero;
-
