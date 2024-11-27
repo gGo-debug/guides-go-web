@@ -49,18 +49,18 @@ export function DownloadSection() {
 
             {/* Add Download Buttons */}
             <div className="space-y-6">
-            <Link href="/waitlist">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
-              >
-                <Download className="w-6 h-6" />
-                Download App
-              </Button>
-            </Link>
+              <Link href="/waitlist">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                >
+                  <Download className="w-6 h-6" />
+                  Download App
+                </Button>
+              </Link>
 
               {/* App store badges */}
-              <div className="flex items-center gap-4 mt-4">
+              {/* <div className="flex items-center gap-4 mt-4">
                 <Image
                   src="/badges/appstore.svg"
                   alt="Download on App Store"
@@ -75,11 +75,11 @@ export function DownloadSection() {
                   height={40}
                   className="h-[40px] w-auto"
                 />
-              </div>
+              </div> */}
             </div>
 
             {/* Stats - Updated for dark background */}
-            <div className="pt-8 border-t border-white/10">
+            {/* <div className="pt-8 border-t border-white/10">
               <div className="flex gap-12">
                 <div>
                   <p className="text-3xl font-bold text-[#0E9871]">50+</p>
@@ -94,7 +94,7 @@ export function DownloadSection() {
                   <p className="text-sm text-white/70">Adventures</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Right Content - Mock iPhone & App Interface */}
@@ -121,4 +121,3 @@ export function DownloadSection() {
 }
 
 export default DownloadSection;
-
