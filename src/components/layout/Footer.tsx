@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
+import { Instagram, Facebook, X, Youtube } from "lucide-react";
+import { XIcon } from "@/components/ui/XIcon";
 
 const socialLinks = [
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/guides_go?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: XIcon, href: "https://x.com/guides_go", label: "Twitter (X)" },
   { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
