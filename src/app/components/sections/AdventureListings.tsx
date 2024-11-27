@@ -11,7 +11,8 @@ function AdventureListings() {
     {
       id: 1,
       title: "Mountain Hiking Expedition",
-      description: "Join us for a thrilling mountain hiking experience through the scenic trails.",
+      description:
+        "Join us for a thrilling mountain hiking experience through the scenic trails.",
       image: "/adventure/mountain-hiking.jpg",
       location: "Rocky Mountains",
       duration: "6 hours",
@@ -22,8 +23,8 @@ function AdventureListings() {
         image: "/guides/mountain-guide.png",
         rating: 4.9,
         reviewCount: 128,
-        badgeText: "Expert Guide"
-      }
+        badgeText: "Expert Guide",
+      },
     },
     {
       id: 2,
@@ -39,15 +40,16 @@ function AdventureListings() {
         image: "/guides/guide2.png",
         rating: 4.7,
         reviewCount: 96,
-        badgeText: "Professional Guide"
-      }
+        badgeText: "Professional Guide",
+      },
     },
     {
       id: 3,
-      title: "Desert Safari",
-      description: "Experience the vast desert landscapes and enjoy traditional activities.",
-      image: "/adventure/desert.jpg",
-      location: "Sahara Desert",
+      title: "Fly Fishing Trip",
+      description:
+        "Cast your line in peaceful streams with our guided fly fishing adventures.",
+      image: "/adventure/flyfish.jpeg",
+      location: "Fraser river",
       duration: "8 hours",
       groupSize: "3-10 people",
       difficulty: "Moderate",
@@ -56,20 +58,20 @@ function AdventureListings() {
         image: "/guides/guide3.png",
         rating: 4.8,
         reviewCount: 112,
-        badgeText: "Adventure Guide"
-      }
+        badgeText: "Adventure Guide",
+      },
     },
   ];
 
   return (
     <section className="relative px-4 py-12 w-full">
       <div className="absolute inset-x-0 top-0 h-32 -mt-32" />
-      
+
       <div className="relative max-w-7xl mx-auto bg-transparent p-4 rounded-lg">
         <div className="px-8 mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center">
             Choose Your Own{" "}
-            <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-transparent bg-clip-text">
               Adventures
             </span>
           </h2>
@@ -102,7 +104,7 @@ function AdventureListings() {
                     {adventure.difficulty}
                   </Badge>
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-forest-green transition-colors">
                     {adventure.title}
@@ -110,8 +112,8 @@ function AdventureListings() {
                   <p className="text-mountain-gray/80 mb-4 line-clamp-2">
                     {adventure.description}
                   </p>
-                  
-                  <div className="flex items-center gap-3 mb-4 p-3 bg-[#FF6B35]/10 rounded-lg">
+
+                  <div className="flex items-center gap-3 mb-4 p-3 bg-[#0E9871]/10 rounded-lg">
                     <img
                       src={adventure.host.image}
                       alt={adventure.host.name}
@@ -121,9 +123,11 @@ function AdventureListings() {
                     />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-medium text-sm">{adventure.host.name}</h4>
-                        <Badge 
-                          variant="outline" 
+                        <h4 className="font-medium text-sm">
+                          {adventure.host.name}
+                        </h4>
+                        <Badge
+                          variant="outline"
                           className="text-xs px-2 py-0.5 bg-white text-forest-green border-forest-green/20"
                         >
                           {adventure.host.badgeText}
@@ -131,7 +135,9 @@ function AdventureListings() {
                       </div>
                       <div className="flex items-center gap-1 text-sm">
                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="font-medium">{adventure.host.rating}</span>
+                        <span className="font-medium">
+                          {adventure.host.rating}
+                        </span>
                         <span className="text-mountain-gray/70">
                           ({adventure.host.reviewCount} reviews)
                         </span>
@@ -154,7 +160,7 @@ function AdventureListings() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all py-6 text-lg font-semibold">
+                  <Button className="w-full bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all py-6 text-lg font-semibold">
                     Book Now
                   </Button>
                 </div>
@@ -167,4 +173,5 @@ function AdventureListings() {
   );
 }
 
-export default AdventureListings; 
+export default AdventureListings;
+

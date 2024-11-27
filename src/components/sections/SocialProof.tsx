@@ -23,8 +23,9 @@ const testimonials: Testimonial[] = [
     role: "Mountain Guide",
     rating: 4.9,
     image: "/testimonials/alex.jpg",
-    content: "Since joining Guides GO, I've built a following of 2,000+ adventure enthusiasts. The livestreaming feature lets me share my passion for mountain climbing with people worldwide.",
-    location: "Colorado, USA"
+    content:
+      "Since joining Guides GO, I've built a following of 2,000+ adventure enthusiasts. The livestreaming feature lets me share my passion for mountain climbing with people worldwide.",
+    location: "Colorado, USA",
   },
   {
     id: 2,
@@ -32,8 +33,9 @@ const testimonials: Testimonial[] = [
     role: "Community Member",
     rating: 4.8,
     image: "/testimonials/sarah.jpg",
-    content: "The quest system makes every hike feel like an achievement. I've completed 23 quests and made amazing friends along the way!",
-    location: "Vancouver, Canada"
+    content:
+      "The quest system makes every hike feel like an achievement. I've completed 23 quests and made amazing friends along the way!",
+    location: "Vancouver, Canada",
   },
   {
     id: 3,
@@ -41,18 +43,19 @@ const testimonials: Testimonial[] = [
     role: "Adventure Guide",
     rating: 5.0,
     image: "/testimonials/marco.jpg",
-    content: "As a professional guide, Guides GO has transformed how I connect with adventure seekers. The platform's tools make it easy to manage bookings and grow my business.",
-    location: "Lisbon, Portugal"
-  }
+    content:
+      "As a professional guide, Guides GO has transformed how I connect with adventure seekers. The platform's tools make it easy to manage bookings and grow my business.",
+    location: "Lisbon, Portugal",
+  },
 ];
 
 // Update the movingTestimonials to include the ratings
-const movingTestimonials = testimonials.map(t => ({
+const movingTestimonials = testimonials.map((t) => ({
   quote: t.content,
   name: t.name,
   title: `${t.role} • ${t.location}`,
   image: t.image,
-  rating: t.rating
+  rating: t.rating,
 }));
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
@@ -67,18 +70,29 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         <div className="flex items-start gap-4">
           <Avatar className="h-12 w-12">
             <AvatarImage src={testimonial.image} alt={testimonial.name} />
-            <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+            <AvatarFallback>
+              {testimonial.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </AvatarFallback>
           </Avatar>
           <div className="space-y-1">
-            <h4 className="font-semibold text-lg text-mountain-gray">{testimonial.name}</h4>
+            <h4 className="font-semibold text-lg text-mountain-gray">
+              {testimonial.name}
+            </h4>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-mountain-gray/80">{testimonial.role}</span>
+              <span className="text-sm text-mountain-gray/80">
+                {testimonial.role}
+              </span>
               <span className="text-sm text-mountain-gray/60">•</span>
-              <span className="text-sm text-mountain-gray/80">{testimonial.location}</span>
+              <span className="text-sm text-mountain-gray/80">
+                {testimonial.location}
+              </span>
             </div>
           </div>
         </div>
-        
+
         <div className="mt-4 flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
             <StarFilledIcon
@@ -117,12 +131,13 @@ export default function SocialProof() {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-mountain-gray">
             Real Stories from{" "}
-            <span className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B35] text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-transparent bg-clip-text">
               Our Community
             </span>
           </h2>
           <p className="text-lg text-mountain-gray/80 max-w-2xl mx-auto mt-6">
-            Join thousands of adventurers and guides who are already transforming their outdoor experiences
+            Join thousands of adventurers and guides who are already
+            transforming their outdoor experiences
           </p>
         </motion.div>
       </div>
@@ -164,4 +179,5 @@ export default function SocialProof() {
       </div>
     </section>
   );
-} 
+}
+

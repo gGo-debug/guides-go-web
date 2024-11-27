@@ -26,38 +26,43 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-montserrat font-bold text-[#2A5A3B]">
-                Guides GO
+              <span className="text-2xl font-['Montserrat'] font-bold text-[#0E9871]">
+                GuidesGo
               </span>
             </Link>
             <p className="text-[#2D3142] text-sm">
-              Turn every adventure into a social quest. Join thousands of adventurers and guides exploring together.
+              Turn every adventure into a social quest. Join thousands of
+              adventurers and guides exploring together.
             </p>
           </div>
 
           {/* Navigation Links - Split into two columns on larger screens */}
           <div className="grid grid-cols-2 gap-8 lg:col-span-2">
             <div>
-              {footerLinks.slice(0, Math.ceil(footerLinks.length / 2)).map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="block mb-3 text-[#2D3142] hover:text-[#2A5A3B] transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {footerLinks
+                .slice(0, Math.ceil(footerLinks.length / 2))
+                .map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="block mb-3 text-[#2D3142] hover:text-[#2A5A3B] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
             </div>
             <div>
-              {footerLinks.slice(Math.ceil(footerLinks.length / 2)).map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="block mb-3 text-[#2D3142] hover:text-[#2A5A3B] transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {footerLinks
+                .slice(Math.ceil(footerLinks.length / 2))
+                .map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="block mb-3 text-[#2D3142] hover:text-[#2A5A3B] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
             </div>
           </div>
 
@@ -87,10 +92,11 @@ export function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-100">
           <p className="text-sm text-[#2D3142] text-center">
-            © {new Date().getFullYear()} Guides GO. All rights reserved.
+            © {new Date().getFullYear()} GuidesGo. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
-} 
+}
+

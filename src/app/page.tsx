@@ -16,10 +16,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center">
       <Hero />
       <AdventureListings />
-      <Features/>
-      <SocialProof />
+      <Features />
+      {/* <SocialProof /> */}
       {/* <FeaturesBreakdown /> */}
-      <CommunityImpact />
+      {/* <CommunityImpact /> */}
       <SafetyTrust />
       {/* <AppShowcase /> */}
       <DownloadSection />

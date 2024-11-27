@@ -1,24 +1,25 @@
 export const navItems = [
-  { label: 'For Guides', href: '/guides' },
-  { label: 'About', href: '/about' },
-  { label: 'Become a Guide', href: '/apply' },
-  { label: 'Download App', href: '/download' },
+  { label: 'For Guides', href: '/waitlist' },
+  { label: 'About', href: '/waitlist' },
+  { label: 'Become a Guide', href: '/waitlist' },
+  { label: 'Download App', href: '/waitlist' },
+  // { label: 'Join Waitlist', href: '/waitlist' },
 
 ] as const;
 
 export const footerLinks = {
   company: [
-    { label: 'About Us', href: '/about' },
-    { label: 'For Guides', href: '/guides' },
-    { label: 'Safety', href: '/safety' },
+    { label: 'About Us', href: '/waitlist' },
+    { label: 'For Guides', href: '/waitlist' },
+    { label: 'Safety', href: '/waitlist' },
   ],
   legal: [
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Privacy Policy', href: '/waitlist' },
+    { label: 'Terms of Service', href: '/waitlist' },
   ],
   support: [
-    { label: 'Community Guidelines', href: '/guidelines' },
-    { label: 'Support', href: '/support' },
+    { label: 'Community Guidelines', href: '/waitlist' },
+    { label: 'Support', href: '/waitlist' },
   ],
   social: [
     { label: 'Instagram', href: 'https://instagram.com/guidesgo' },
