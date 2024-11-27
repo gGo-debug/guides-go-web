@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | GuidesGo",
   },
   description:
-  "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you. Available now on iOS and Android.",
+    "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you. Available now on iOS and Android.",
   keywords: [
     "adventure platform",
     "travel guides",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "GuidesGo",
     title: "GuidesGo - Adventure Platform",
     description:
-    "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
+      "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
     images: [
       {
         url: "/og-image.jpg",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GuidesGo - Adventure Platform",
     description:
-    "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
+      "Discover unforgettable outdoor adventures with local guides across Canada, tailored just for you.",
     images: ["/twitter-image.jpg"],
     creator: "@guidesgo",
   },
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     maximumScale: 1,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/Logo.ico",
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.json",
