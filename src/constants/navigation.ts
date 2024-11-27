@@ -1,5 +1,5 @@
 export const navItems = [
-  { label: 'For Guides', href: '/waitlist' },
+  { label: 'Book Now', href: '/adventures' },
   { label: 'About', href: '/waitlist' },
   { label: 'Become a Guide', href: '/waitlist' },
   { label: 'Download App', href: '/waitlist' },
