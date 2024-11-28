@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { navItems } from "@/constants/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -39,6 +40,15 @@ export function Navbar({ className }: NavbarProps) {
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.svg" // Replace with your actual file name
+              alt="GuidesGo Logo"
+              width={32}
+              height={32}
+              className={`transition-colors duration-300 pr-2 ${
+                isScrolled ? "filter brightness-0 saturate-150" : ""
+              }`}
+            />
             <span
               className={`
               font-['Montserrat'] font-bold text-xl transition-colors duration-300
@@ -121,4 +131,3 @@ export function Navbar({ className }: NavbarProps) {
     </nav>
   );
 }
-
