@@ -4,13 +4,39 @@ import { BookingSection } from '@/components/adventures/BookingSection';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { MapPin, Clock, Users, CheckCircle } from 'lucide-react';
-import { ReactElement, JSXElementConstructor, ReactNode, AwaitedReactNode, Key } from 'react';
+import { Metadata } from 'next';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async function AdventurePage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { data: adventure } = await supabase
+    .from('adventures')
+    .select('*')
+    .eq('id', params.id)
+    .single();
+
+  if (!adventure) {
+    return {
+      title: 'Adventure Not Found',
+      description: 'The requested adventure could not be found.',
+    };
+  }
+
+  return {
+    title: `${adventure.title} - Book Now`,
+    description: adventure.description,
+  };
+}
+
+export default async function AdventurePage({ params }: PageProps) {
   const { data: adventure } = await supabase
     .from('adventures')
     .select('*')
@@ -68,7 +94,7 @@ export default async function AdventurePage({ params }: { params: { id: string }
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-gray-900">What's Included</h2>
               <ul className="grid grid-cols-2 gap-3">
-                {adventure.included_items?.map((item: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<AwaitedReactNode> | Key | null | undefined) => (
+                {adventure.included_items?.map((item: string) => (
                   <li key={item} className="flex items-center gap-2 text-gray-600">
                     <CheckCircle className="w-5 h-5 text-[#0E9871]" />
                     <span>{item}</span>
@@ -81,7 +107,7 @@ export default async function AdventurePage({ params }: { params: { id: string }
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-gray-900">What to Bring</h2>
               <ul className="grid grid-cols-2 gap-3">
-                {adventure.required_items?.map((item: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<AwaitedReactNode> | Key | null | undefined) => (
+                {adventure.required_items?.map((item: string) => (
                   <li key={item} className="flex items-center gap-2 text-gray-600">
                     <div className="w-2 h-2 rounded-full bg-[#0E9871]" />
                     <span>{item}</span>
