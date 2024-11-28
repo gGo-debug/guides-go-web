@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { Container } from '@/components/ui/container';
 import { BookingSection } from '@/components/adventures/BookingSection';
@@ -24,34 +23,19 @@ interface Adventure {
   required_items: string[];
 }
 
-interface PageProps {
-  params: { id: string };
-  searchParams: Record<string, string | string[] | undefined>;
-}
-
-async function getAdventure(id: string): Promise<Adventure> {
+async function getAdventure(id: string): Promise<Adventure | null> {
   const { data, error } = await supabase
     .from('adventures')
     .select('*')
     .eq('id', id)
     .single();
 
-  if (error || !data) {
-    notFound();
+  if (error) {
+    console.error('Error fetching adventure:', error);
+    return null;
   }
 
   return data;
-}
-
-export async function generateMetadata(
-  { params }: PageProps
-): Promise<Metadata> {
-  const adventure = await getAdventure(params.id);
-
-  return {
-    title: `${adventure.title} - Book Now`,
-    description: adventure.description,
-  };
 }
 
 function AdventureDetails({ adventure }: { adventure: Adventure }) {
@@ -120,16 +104,42 @@ function AdventureDetails({ adventure }: { adventure: Adventure }) {
   );
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
-  const adventure = await getAdventure(params.id);
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  props: PageProps
+): Promise<Metadata> {
+  const { id } = await props.params;
+  const adventure = await getAdventure(id);
+
+  if (!adventure) {
+    return {
+      title: 'Adventure Not Found',
+      description: 'The requested adventure could not be found.',
+    };
+  }
+
+  return {
+    title: `${adventure.title} - Book Now`,
+    description: adventure.description,
+  };
+}
+
+export default async function Page(props: PageProps) {
+  const { id } = await props.params;
+  const adventure = await getAdventure(id);
+
+  if (!adventure) {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen py-20">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12">
-          <Suspense fallback={<div>Loading...</div>}>
-            <AdventureDetails adventure={adventure} />
-          </Suspense>
+          <AdventureDetails adventure={adventure} />
 
           <div className="lg:sticky lg:top-24 h-fit">
             <BookingSection 
