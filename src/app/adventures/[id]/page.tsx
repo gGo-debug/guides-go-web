@@ -4,6 +4,7 @@ import { BookingSection } from '@/components/adventures/BookingSection';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { MapPin, Clock, Users, CheckCircle } from 'lucide-react';
+import { ReactElement, JSXElementConstructor, ReactNode, AwaitedReactNode, Key } from 'react';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -67,7 +68,7 @@ export default async function AdventurePage({ params }: { params: { id: string }
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-gray-900">What's Included</h2>
               <ul className="grid grid-cols-2 gap-3">
-                {adventure.included_items?.map((item) => (
+                {adventure.included_items?.map((item: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<AwaitedReactNode> | Key | null | undefined) => (
                   <li key={item} className="flex items-center gap-2 text-gray-600">
                     <CheckCircle className="w-5 h-5 text-[#0E9871]" />
                     <span>{item}</span>
@@ -80,7 +81,7 @@ export default async function AdventurePage({ params }: { params: { id: string }
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-gray-900">What to Bring</h2>
               <ul className="grid grid-cols-2 gap-3">
-                {adventure.required_items?.map((item) => (
+                {adventure.required_items?.map((item: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<AwaitedReactNode> | Key | null | undefined) => (
                   <li key={item} className="flex items-center gap-2 text-gray-600">
                     <div className="w-2 h-2 rounded-full bg-[#0E9871]" />
                     <span>{item}</span>
