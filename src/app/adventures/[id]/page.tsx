@@ -10,13 +10,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-type AdventurePageProps = {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
 interface Adventure {
   id: string;
   title: string;
@@ -30,14 +23,21 @@ interface Adventure {
   required_items: string[];
 }
 
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 export async function generateMetadata(
-  { params }: AdventurePageProps,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const id = (await params).id;
+  
   const { data: adventure } = await supabase
     .from('adventures')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (!adventure) {
@@ -53,11 +53,13 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page({ params, searchParams }: AdventurePageProps) {
+export default async function Page({ params, searchParams }: Props) {
+  const id = (await params).id;
+  
   const { data: adventure } = await supabase
     .from('adventures')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (!adventure) {
