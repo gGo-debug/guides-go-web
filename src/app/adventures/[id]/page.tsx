@@ -10,13 +10,23 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-interface PageProps {
+type Props = {
   params: {
     id: string;
   };
+};
+
+export async function generateStaticParams() {
+  const { data: adventures } = await supabase
+    .from('adventures')
+    .select('id');
+
+  return adventures?.map((adventure) => ({
+    id: adventure.id,
+  })) || [];
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data: adventure } = await supabase
     .from('adventures')
     .select('*')
@@ -36,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function AdventurePage({ params }: PageProps) {
+export default async function AdventurePage({ params }: Props) {
   const { data: adventure } = await supabase
     .from('adventures')
     .select('*')
