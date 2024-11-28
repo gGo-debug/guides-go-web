@@ -80,3 +80,27 @@
     @apply text-[20px] leading-[28px] font-semibold;
   }
 }
+
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #0E9871;
+  --rdp-background-color: #e7edff;
+  margin: 0;
+}
+
+.rdp-day_selected:not([disabled]) { 
+  color: white;
+  background-color: var(--rdp-accent-color);
+}
+
+.rdp-day_selected:focus:not([disabled]) { 
+  background-color: var(--rdp-accent-color);
+}
+
+.rdp-day_selected:hover:not([disabled]) {
+  background-color: var(--rdp-accent-color);
+}
+
+.rdp-day:hover:not([disabled]) {
+  background-color: var(--rdp-background-color);
+}
