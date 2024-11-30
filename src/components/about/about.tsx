@@ -103,10 +103,25 @@ export default function About() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="bg-green-950 text-white py-20 text-center"
+        className="bg-black/60 bg-center text-white py-20 text-center"
+        style={{
+          backgroundImage: 'url("/hero-bg.jpg")',
+          backgroundBlendMode: "overlay",
+        }}
       >
-        <h1 className="text-4xl font-bold mb-4">About GuidesGo</h1>
+        {/* <h1 className="text-4xl font-bold mb-4">About GuidesGo</h1>
         <p className="text-xl max-w-2xl mx-auto">
+          Connecting adventurers with expert guides for unforgettable outdoor
+          experiences across Canada.
+        </p> */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mt-12">
+          About{" "}
+          <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
+            GuidesGo
+          </span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto my-6">
           Connecting adventurers with expert guides for unforgettable outdoor
           experiences across Canada.
         </p>
