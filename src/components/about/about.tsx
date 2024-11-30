@@ -160,7 +160,7 @@ export default function About() {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="/canada-landscape.jpg"
+                src="/about-image.webp"
                 alt="Canadian landscape"
                 width={600}
                 height={400}
