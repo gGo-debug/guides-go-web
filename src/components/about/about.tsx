@@ -134,16 +134,18 @@ export default function About() {
           variants={fadeIn}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12">
+            Our Story
+          </h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="md:w-1/2">
-              <p className="mb-4">
+              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-left font-medium">
                 Born out of a love for Canada's wild landscapes, Guides GO was
                 created by a group of outdoor enthusiasts who wanted to make
                 outdoor adventures more accessible and environmentally
                 conscious.
               </p>
-              <p>
+              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-left font-medium">
                 Our mission is simple: to connect adventurers with expert
                 guides, ensure sustainable practices, and make it easier for
                 guides to manage and grow their businesses. Whether you’re a
@@ -157,8 +159,8 @@ export default function About() {
               <Image
                 src="/canada-landscape.jpg"
                 alt="Canadian landscape"
-                width={400}
-                height={300}
+                width={600}
+                height={400}
                 className="rounded-lg shadow-lg"
               />
             </div>

@@ -174,4 +174,3 @@ function AdventureListings() {
 }
 
 export default AdventureListings;
-
