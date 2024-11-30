@@ -1,6 +1,6 @@
 export const navItems = [
   { label: "Book Now", href: "/waitlist" },
-  { label: "About", href: "/waitlist" },
+  { label: "About", href: "/about" },
   { label: "Become a Guide", href: "/waitlist" },
   { label: "Download App", href: "/waitlist" },
   // { label: 'Join Waitlist', href: '/waitlist' },
@@ -27,4 +27,3 @@ export const footerLinks = {
     { label: "YouTube", href: "https://youtube.com/guidesgo" },
   ],
 } as const;
-
