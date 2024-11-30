@@ -135,7 +135,10 @@ export default function About() {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12">
-            Our Story
+            Our{" "}
+            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
+              Story
+            </span>
           </h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="md:w-1/2">
@@ -173,7 +176,12 @@ export default function About() {
           variants={staggerChildren}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold mb-6">What We Offer</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12">
+            What We{" "}
+            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
+              Offer
+            </span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
@@ -181,8 +189,10 @@ export default function About() {
                 variants={fadeIn}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-semibold mb-2">{service.name}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-2xl font-bold mb-1">{service.name}</h3>
+                <p className="text-gray-600 mb-2 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-left font-medium">
+                  {service.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -196,12 +206,12 @@ export default function About() {
         >
           <h2 className="text-3xl font-bold mb-6">For Guides</h2>
           <div className="bg-white p-8 rounded-lg shadow-md">
-            <p className="mb-4">
+            <p className="mb-8 text-base md:text-lg lg:text-xl mx-auto text-mountain-gray/80 text-left font-medium">
               Guides GO offers more than just a platform to connect with
               clients—we provide guides with tools to manage their business,
               streamline bookings, and grow their client base.
             </p>
-            <p>
+            <p className="text-base md:text-lg lg:text-xl mx-auto text-mountain-gray/80 text-left font-medium">
               Whether you're running a fishing trip or leading a wilderness
               survival course, we make it easier for you to focus on what you do
               best: sharing your outdoor expertise, creating lasting memories,
@@ -216,7 +226,12 @@ export default function About() {
           variants={staggerChildren}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold mb-6">Why Choose Guides GO?</h2>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12 mb-16">
+            Why Choose{" "}
+            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
+              GuidesGo
+            </span>
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
             {[
               { icon: FaMapMarkedAlt, text: "Expert Local Guides" },
