@@ -99,7 +99,7 @@ export function Navbar({ className }: NavbarProps) {
           <div
             className={`
             md:hidden absolute top-[72px] left-0 right-0 shadow-lg
-            ${isScrolled ? "bg-white" : "bg-[#2A5A3B]"}
+            ${isScrolled ? "bg-[#2A5A3B]" : "bg-[#2A5A3B]"}
           `}
           >
             <div className="flex flex-col px-4 py-2">
@@ -110,13 +110,13 @@ export function Navbar({ className }: NavbarProps) {
                   className={`
                     font-['Inter'] text-[16px] font-medium
                     py-4 border-b border-opacity-10
-                    ${isScrolled ? "border-white" : "border-gray-100"} last:border-0
+                    ${isScrolled ? "border-white" : "border-white"} last:border-0
                     ${
                       item.label === "Download App"
                         ? "text-[#FF6B35] font-semibold bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-white rounded-lg px-4"
                         : isScrolled
                           ? "text-white hover:text-[#7DCFFF]"
-                          : "text-[#2D3142] hover:text-[#2A5A3B]"
+                          : "text-white hover:text-[#7DCFFF]"
                     }
                   `}
                   onClick={() => setIsMenuOpen(false)}
