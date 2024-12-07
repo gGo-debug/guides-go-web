@@ -8,14 +8,33 @@ interface AdventureCardProps {
     title: string;
     description: string;
     location: string;
-    duration: string;
+    duration_minutes: number;
     price: number;
-    group_size: string;
+    min_group_size: number;
+    max_group_size: number;
     image_url: string;
   };
 }
 
 export default function AdventureCard({ adventure }: AdventureCardProps) {
+  // Format duration for display
+  const formatDuration = (minutes: number) => {
+    if (minutes >= 1440) { // More than a day
+      const days = Math.floor(minutes / 1440);
+      return `${days} day${days > 1 ? 's' : ''}`;
+    } else if (minutes >= 60) {
+      const hours = Math.floor(minutes / 60);
+      return `${hours} hour${hours > 1 ? 's' : ''}`;
+    }
+    return `${minutes} minutes`;
+  };
+
+  // Format group size for display
+  const formatGroupSize = (min: number, max: number) => {
+    if (min === max) return `${min} people`;
+    return `${min}-${max} people`;
+  };
+
   return (
     <Link 
       href={`/adventures/${adventure.id}`}
@@ -52,11 +71,11 @@ export default function AdventureCard({ adventure }: AdventureCardProps) {
           </div>
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
-            {adventure.duration}
+            {formatDuration(adventure.duration_minutes)}
           </div>
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4" />
-            {adventure.group_size}
+            {formatGroupSize(adventure.min_group_size, adventure.max_group_size)}
           </div>
         </div>
 
