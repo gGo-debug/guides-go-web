@@ -1,14 +1,15 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { useDebounce } from '@/constants/useDebounce';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Duration mappings in minutes
+// Duration mappings (same as before)
 const DURATION_RANGES = {
   "< 3 hours": { min: 0, max: 179 },
   "3-6 hours": { min: 180, max: 359 },
@@ -26,11 +27,11 @@ interface Adventure {
   location: string;
   duration_minutes: number;
   price: number;
-  difficulty: string;
   min_group_size: number;
   max_group_size: number;
   image_url: string;
   category: string;
+  difficulty: string;
 }
 
 interface Filters {
@@ -44,6 +45,7 @@ interface Filters {
 
 interface FilterContextType {
   filters: Filters;
+  debouncedFilters: Filters;
   adventures: Adventure[];
   isLoading: boolean;
   updateFilters: (newFilters: Partial<Filters>) => void;
@@ -66,7 +68,10 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
   const [adventures, setAdventures] = useState<Adventure[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchFilteredAdventures = async (currentFilters: Filters) => {
+  // Debounce all filters with a 500ms delay
+  const debouncedFilters = useDebounce<Filters>(filters, 500);
+
+  const fetchFilteredAdventures = useCallback(async (currentFilters: Filters) => {
     setIsLoading(true);
     try {
       let query = supabase
@@ -91,7 +96,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         query = query.in('category', currentFilters.selectedCategories);
       }
 
-      // Apply group size filter - ensure the requested group size fits within the adventure's range
+      // Apply group size filter
       if (currentFilters.groupSize > 1) {
         query = query
           .lte('min_group_size', currentFilters.groupSize)
@@ -106,7 +111,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         
         query = query
           .gte('duration_minutes', minDuration)
-          .lte('duration_minutes', maxDuration === Infinity ? 10080 : maxDuration); // Cap at 7 days
+          .lte('duration_minutes', maxDuration === Infinity ? 10080 : maxDuration);
       }
 
       const { data, error } = await query;
@@ -136,27 +141,26 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
-  const updateFilters = (newFilters: Partial<Filters>) => {
-    const updatedFilters = { ...filters, ...newFilters };
-    setFilters(updatedFilters);
-    fetchFilteredAdventures(updatedFilters);
-  };
-
-  const clearFilters = () => {
-    setFilters(initialFilters);
-    fetchFilteredAdventures(initialFilters);
-  };
-
+  // Use effect to watch for changes in debounced filters
   useEffect(() => {
-    fetchFilteredAdventures(filters);
+    fetchFilteredAdventures(debouncedFilters);
+  }, [debouncedFilters, fetchFilteredAdventures]);
+
+  const updateFilters = useCallback((newFilters: Partial<Filters>) => {
+    setFilters(prev => ({ ...prev, ...newFilters }));
+  }, []);
+
+  const clearFilters = useCallback(() => {
+    setFilters(initialFilters);
   }, []);
 
   return (
     <FilterContext.Provider 
       value={{ 
         filters, 
+        debouncedFilters,
         adventures, 
         isLoading,
         updateFilters,
