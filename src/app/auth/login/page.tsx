@@ -1,24 +1,21 @@
-// app/auth/login/page.tsx
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 import { login } from '../actions'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
 
 export default function LoginPage() {
-  const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(formData: FormData) {
     setError(null)
-    startTransition(async () => {
-      const result = await login(formData)
-      if (result?.error) {
-        setError(result.error)
-      }
-    })
+    const result = await login(formData)
+    if (result?.error) {
+      setError(result.error)
+    }
+    // Successful login is handled by the server action (redirect)
   }
 
   return (
@@ -67,9 +64,8 @@ export default function LoginPage() {
           <Button
             type="submit"
             className="w-full"
-            disabled={isPending}
           >
-            {isPending ? 'Signing in...' : 'Sign in'}
+            Sign in
           </Button>
 
           <div className="text-center text-sm">
