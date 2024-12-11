@@ -1,89 +1,204 @@
 "use client";
 
 import * as React from "react";
-import { DayPicker, DayPickerProps, SelectSingleEventHandler } from "react-day-picker";
+import DatePicker from "react-datepicker";
 import { cn } from "@/lib/utils";
+import "react-datepicker/dist/react-datepicker.css";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface CalendarProps {
   className?: string;
   mode?: "single";
-  selected?: Date | undefined;
-  onSelect?: SelectSingleEventHandler;
-  disabled?: DayPickerProps["disabled"];
-  defaultMonth?: Date;
+  selected?: Date | null;
+  onSelect?: (date: Date | null) => void;
+  disabled?: (date: Date) => boolean;
+  initialDate?: Date;
   numberOfMonths?: number;
+  showOutsideDays?: boolean;
 }
 
 export function Calendar({
   className,
-  mode = "single",
   selected,
   onSelect,
+  disabled,
+  initialDate,
+  numberOfMonths = 1,
+  showOutsideDays = true,
   ...props
 }: CalendarProps) {
-  const customClassNames: DayPickerProps["classNames"] = {
-    months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-    month: "space-y-4",
-    caption: "flex justify-center pt-1 relative items-center",
-    caption_label: "text-sm font-medium",
-    caption_dropdowns: "flex justify-center gap-1",
-    vhidden: "hidden",
-    nav: "space-x-1 flex items-center",
-    nav_button_previous: "absolute left-1",
-    nav_button_next: "absolute right-1",
-    nav_button: cn(
-      "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
-    ),
-    table: "w-full border-collapse space-y-1",
-    head_row: "flex",
-    head_cell: cn(
-      "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]"
-    ),
-    row: "flex w-full mt-2",
-    cell: cn(
-      "h-9 w-9 text-center text-sm relative p-0 focus-within:relative focus-within:z-20",
-      "[&:has([aria-selected].day-range-end)]:rounded-r-md",
-      "[&:has([aria-selected].day-outside)]:bg-accent/50",
-      "[&:has([aria-selected])]:bg-accent",
-      "first:[&:has([aria-selected])]:rounded-l-md",
-      "last:[&:has([aria-selected])]:rounded-r-md"
-    ),
-    day: cn(
-      "h-9 w-9 p-0 font-normal",
-      "aria-selected:opacity-100",
-      "rounded-md",
-      "transition-colors",
-      "hover:bg-accent hover:text-accent-foreground",
-      "focus:bg-accent focus:text-accent-foreground focus:outline-none",
-      "disabled:pointer-events-none disabled:opacity-50"
-    ),
-    day_today: "bg-accent text-accent-foreground",
-    day_outside: cn(
-      "day-outside text-muted-foreground opacity-50",
-      "aria-selected:bg-accent/50 aria-selected:opacity-30"
-    ),
-    day_disabled: "text-muted-foreground opacity-50",
-    day_range_middle: cn(
-      "aria-selected:bg-accent aria-selected:text-accent-foreground"
-    ),
-    day_selected: cn(
-      "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
-      "focus:bg-primary focus:text-primary-foreground"
-    ),
-    day_range_end: "day-range-end",
-    day_hidden: "invisible",
+  const handleChange = (date: Date | null) => {
+    if (onSelect) {
+      onSelect(date);
+    }
+  };
+
+  const handleDisabled = (date: Date): boolean => {
+    if (disabled) {
+      return disabled(date);
+    }
+    return false;
   };
 
   return (
-    <DayPicker
-      mode="single"
-      showOutsideDays={true}
-      className={cn("p-3", className)}
-      classNames={customClassNames}
-      selected={selected}
-      onSelect={onSelect}
-      {...props}
-    />
+    <>
+      <style jsx global>{`
+        .react-datepicker {
+          font-family: inherit;
+          background-color: hsl(var(--background));
+          border: 1px solid hsl(var(--border));
+          border-radius: calc(var(--radius) - 2px);
+          padding: 12px;
+          font-size: 0.875rem;
+          width: 100%;
+        }
+
+        .react-datepicker__month-container {
+          float: none;
+          width: 100%;
+        }
+
+        .react-datepicker__month {
+          margin: 0;
+        }
+
+        .react-datepicker__header {
+          background-color: transparent;
+          border-bottom: none;
+          padding: 0;
+        }
+
+        .react-datepicker__navigation {
+          top: 12px;
+        }
+
+        .react-datepicker__navigation--previous {
+          left: 12px;
+        }
+
+        .react-datepicker__navigation--next {
+          right: 12px;
+        }
+
+        .react-datepicker__navigation-icon::before {
+          border-color: hsl(var(--foreground));
+          border-width: 1px;
+        }
+
+        .react-datepicker__current-month {
+          font-size: 0.875rem;
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+
+        .react-datepicker__day-names {
+          margin-top: 8px;
+          display: flex;
+          justify-content: space-between;
+          padding: 0 0.5rem;
+        }
+
+        .react-datepicker__day-name {
+          color: hsl(var(--muted-foreground));
+          margin: 0;
+          width: 2.25rem;
+          font-size: 0.75rem;
+        }
+
+        .react-datepicker__month {
+          margin: 0;
+        }
+
+        .react-datepicker__week {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 0.5rem;
+        }
+
+        .react-datepicker__day {
+          margin: 0;
+          width: 2.25rem;
+          height: 2.25rem;
+          line-height: 2.25rem;
+          color: hsl(var(--foreground));
+          border-radius: calc(var(--radius) - 2px);
+          transition: all 150ms;
+        }
+
+        .react-datepicker__day:hover {
+          background-color: hsl(var(--accent));
+          color: hsl(var(--accent-foreground));
+        }
+
+        .react-datepicker__day--selected {
+          background-color: hsl(var(--primary)) !important;
+          color: hsl(var(--primary-foreground)) !important;
+        }
+
+        .react-datepicker__day--keyboard-selected {
+          background-color: hsl(var(--accent));
+          color: hsl(var(--accent-foreground));
+        }
+
+        .react-datepicker__day--today {
+          background-color: hsl(var(--accent));
+          color: hsl(var(--accent-foreground));
+          font-weight: normal;
+        }
+
+        .react-datepicker__day--disabled {
+          color: hsl(var(--muted-foreground));
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .react-datepicker__day--outside-month {
+          color: hsl(var(--muted-foreground));
+          opacity: 0.5;
+        }
+      `}</style>
+      <div className="w-full">
+        <DatePicker
+          selected={selected}
+          onChange={handleChange}
+          filterDate={handleDisabled}
+          monthsShown={numberOfMonths}
+          inline
+          showPopperArrow={false}
+          openToDate={initialDate}
+          dateFormat="PP"
+          fixedHeight
+          renderCustomHeader={({
+            monthDate,
+            customHeaderCount,
+            decreaseMonth,
+            increaseMonth,
+          }) => (
+            <div className="flex items-center justify-between px-2 py-1">
+              <button
+                onClick={decreaseMonth}
+                className="p-1 rounded-md hover:bg-accent"
+                type="button"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="text-sm font-medium">
+                {monthDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
+              </div>
+              <button
+                onClick={increaseMonth}
+                className="p-1 rounded-md hover:bg-accent"
+                type="button"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+          calendarClassName={cn("!font-sans", className)}
+          {...props}
+        />
+      </div>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
+import { AuthProvider } from '@/contexts/AuthContext';
 
 // Load fonts
 const inter = Inter({
@@ -87,10 +88,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${montserrat.variable} font-sans antialiased bg-white`}
       >
+        <AuthProvider>
         <Navbar />
         <main className="flex min-h-screen flex-col">{children}</main>
         <Footer />
         <FloatingCTA />
+        </AuthProvider>
       </body>
     </html>
   );

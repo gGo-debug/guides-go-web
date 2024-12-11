@@ -190,3 +190,13 @@
   text-transform: uppercase;
   padding: 0.5rem 0;
 }
+
+.react-datepicker__day--highlighted {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.react-datepicker__day--disabled {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
