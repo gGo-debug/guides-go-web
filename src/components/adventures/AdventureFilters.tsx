@@ -3,7 +3,7 @@
 import { useFilters } from './FilterContext';
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { Calendar } from "@/components/ui/calendar";
+import Calendar from '@/components/ui/calendar-new';
 import { Button } from "@/components/ui/button";
 import { MapPin, Users, Clock } from "lucide-react";
 
@@ -50,11 +50,13 @@ export default function AdventureFilters() {
       <div>
         <h3 className="text-lg font-semibold mb-4">Date</h3>
         <Calendar
-          mode="single"
           selected={filters.selectedDate}
           onSelect={(date) => updateFilters({ selectedDate: date })}
-          className="rounded-md border"
-          disabled={(date) => date < new Date()}
+          minDate={new Date()}
+          placeholderText="Filter by date"
+          inline={true}
+          showTimeSelect={false}
+          className="w-full"
         />
       </div>
 
@@ -146,7 +148,7 @@ export default function AdventureFilters() {
             </Badge>
           ))}
         </div>
-        
+
         {/* Optional: Add helper text to show duration ranges */}
         {filters.duration.length > 0 && (
           <p className="mt-2 text-sm text-gray-500">
@@ -156,8 +158,8 @@ export default function AdventureFilters() {
       </div>
 
       {/* Clear Filters Button */}
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         className="w-full"
         onClick={clearFilters}
       >

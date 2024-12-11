@@ -1,8 +1,8 @@
-// components/adventures/BookingSection.tsx
+// BookingSection.tsx
 "use client";
 
 import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
+import Calendar from "@/components/ui/calendar-new"; // Update import
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -68,12 +68,20 @@ export function BookingSection({
   const renderDateSelection = () => (
     <div className="space-y-6">
       <Calendar
-        mode="single"
         selected={selectedDate}
         onSelect={handleDateSelect}
-        disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
-        className="rounded-md border"
-        initialDate={new Date()}
+        minDate={new Date()}
+        placeholderText="Select booking date"
+        inline={true}
+        showTimeSelect={false}
+        onMonthChange={(date) => {
+          // Load availability for the new month
+          const firstOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+          const lastOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+          // Optional: Load availability for the entire month
+          handleDateSelect(date);
+        }}
+        className="w-full"
       />
 
       {isLoading ? (

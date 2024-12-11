@@ -3,20 +3,20 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
-import { Calendar } from "@/components/ui/calendar";
+import Calendar from '@/components/ui/calendar-new'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
-import { 
+import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogHeader,
@@ -51,11 +51,11 @@ interface BookingState {
   specialRequirements?: string;
 }
 
-export function BookingFlow({ 
+export function BookingFlow({
   adventureId,
   basePrice,
   maxGroupSize
-}: { 
+}: {
   adventureId: string;
   basePrice: number;
   maxGroupSize: number;
@@ -67,7 +67,7 @@ export function BookingFlow({
     contactEmail: '',
     contactPhone: '',
   });
-  
+
   const [availability, setAvailability] = useState<TimeSlot[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -123,7 +123,7 @@ export function BookingFlow({
   const updateParticipant = (index: number, field: keyof Participant, value: string) => {
     setBooking(prev => ({
       ...prev,
-      participants: prev.participants.map((p, i) => 
+      participants: prev.participants.map((p, i) =>
         i === index ? { ...p, [field]: field === 'age' ? Number(value) : value } : p
       )
     }));
@@ -200,11 +200,18 @@ export function BookingFlow({
           <div className="space-y-6">
             <h2 className="text-xl font-semibold">Select Date & Time</h2>
             <Calendar
-              mode="single"
               selected={booking.date}
               onSelect={handleDateSelect}
-              className="rounded-md border"
-              disabled={(date) => date < new Date()}
+              minDate={new Date()}
+              placeholderText="Select date"
+              showTimeSelect={false}
+              inline={true}
+              onMonthChange={(date) => {
+                // Load availability for the new month
+                const firstOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                const lastOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                loadAvailability(firstOfMonth);
+              }}
             />
 
             {isLoading ? (
@@ -246,7 +253,7 @@ export function BookingFlow({
         return (
           <div className="space-y-6">
             <h2 className="text-xl font-semibold">Participant Information</h2>
-            
+
             <div className="space-y-4">
               {booking.participants.map((participant, index) => (
                 <Card key={index}>
@@ -264,7 +271,7 @@ export function BookingFlow({
                           </Button>
                         )}
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor={`name-${index}`}>Full Name</Label>
                         <Input
@@ -310,7 +317,7 @@ export function BookingFlow({
         return (
           <div className="space-y-6">
             <h2 className="text-xl font-semibold">Contact Information</h2>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>

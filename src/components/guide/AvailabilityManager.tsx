@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/components/ui/calendar-new";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 

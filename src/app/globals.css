@@ -81,114 +81,37 @@
   }
 }
 
-/* .rdp {
-  --rdp-cell-size: 40px;
-  --rdp-accent-color: #0E9871;
-  --rdp-background-color: #e7edff;
-  margin: 0;
+/* Remove all .rdp styles and replace with these react-datepicker styles
+.react-datepicker {
+  @apply font-sans !important;
 }
 
-.rdp-day_selected:not([disabled]) { 
-  color: white;
-  background-color: var(--rdp-accent-color);
+.react-datepicker__header {
+  @apply bg-background border-border !important;
 }
 
-.rdp-day_selected:focus:not([disabled]) { 
-  background-color: var(--rdp-accent-color);
+.react-datepicker__day--selected {
+  @apply bg-primary text-primary-foreground !important;
 }
 
-.rdp-day_selected:hover:not([disabled]) {
-  background-color: var(--rdp-accent-color);
+.react-datepicker__day--highlighted {
+  @apply bg-primary text-primary-foreground !important;
 }
 
-.rdp-day:hover:not([disabled]) {
-  background-color: var(--rdp-background-color);
-} */
-
-.rdp {
-  --rdp-cell-size: 40px;
-  --rdp-accent-color: #0E9871;
-  --rdp-background-color: #e7edff;
-  --rdp-accent-color-dark: #0E9871;
-  --rdp-background-color-dark: #1c2230;
-  --rdp-outline: 2px solid var(--rdp-accent-color);
-  --rdp-outline-selected: 2px solid var(--rdp-accent-color);
-  margin: 0;
+.react-datepicker__day:hover:not(.react-datepicker__day--disabled) {
+  @apply bg-accent text-accent-foreground !important;
 }
 
-.rdp-cell {
-  padding: 0;
-  letter-spacing: -0.025em;
+.react-datepicker__day--keyboard-selected {
+  @apply bg-accent/50 text-accent-foreground !important;
 }
 
-.rdp-table {
-  max-width: 100%;
-  border-collapse: collapse;
+.react-datepicker__day--today {
+  @apply font-normal !important;
 }
 
-.rdp-day {
-  width: var(--rdp-cell-size);
-  height: var(--rdp-cell-size);
-  border-radius: 100%;
-  transition: all 0.2s ease;
-}
-
-.rdp-day:hover:not([disabled]) {
-  background-color: var(--rdp-background-color);
-}
-
-.rdp-day_selected:not([disabled]) {
-  color: white;
-  background-color: var(--rdp-accent-color);
-}
-
-.rdp-day_selected:focus:not([disabled]) {
-  background-color: var(--rdp-accent-color);
-}
-
-.rdp-day_selected:hover:not([disabled]) {
-  background-color: var(--rdp-accent-color);
-  opacity: 0.9;
-}
-
-.rdp-nav {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 0.5rem;
-}
-
-.rdp-nav_button {
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border-radius: 8px;
-}
-
-.rdp-nav_button:hover {
-  background-color: var(--rdp-background-color);
-}
-
-.rdp-caption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.5rem;
-  text-align: left;
-}
-
-.rdp-caption_label {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1a1a1a;
-}
-
-.rdp-head_cell {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: #4b5563;
-  text-transform: uppercase;
-  padding: 0.5rem 0;
+.react-datepicker__day--disabled {
+  @apply text-muted-foreground/50 !important;
 }
 
 .react-datepicker__day--highlighted {
@@ -199,4 +122,4 @@
 .react-datepicker__day--disabled {
   color: var(--muted-foreground);
   opacity: 0.5;
-}
+} */
