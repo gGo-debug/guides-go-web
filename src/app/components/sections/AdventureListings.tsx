@@ -36,7 +36,7 @@ function AdventureListings() {
       groupSize: "2-6 people",
       difficulty: "Easy",
       host: {
-        name: "Maria Rodriguez",
+        name: "Mark Wilson",
         image: "/guides/guide2.png",
         rating: 4.7,
         reviewCount: 96,
@@ -54,7 +54,7 @@ function AdventureListings() {
       groupSize: "3-10 people",
       difficulty: "Moderate",
       host: {
-        name: "James Chen",
+        name: "James Taylor",
         image: "/guides/guide3.png",
         rating: 4.8,
         reviewCount: 112,
