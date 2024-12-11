@@ -197,7 +197,7 @@ export function Hero() {
                 </Avatar>
                 <div className="space-y-1">
                   <p className="font-medium text-sm text-[#2D3142]">
-                    Mike Chen
+                    Daniel Bisaso
                   </p>
                   <p className="text-xs text-[#2D3142]/60">Adventure Seeker</p>
                   <p className="text-xs text-[#0E9871] font-medium">
