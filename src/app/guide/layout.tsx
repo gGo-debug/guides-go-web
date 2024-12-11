@@ -1,7 +1,7 @@
-// app/guide/layout.tsx
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { GuideNav } from '@/components/guide/GuideNav';
 
 export default async function GuideLayout({
   children,
@@ -12,26 +12,24 @@ export default async function GuideLayout({
   const { data: { session } } = await supabase.auth.getSession();
 
   if (!session) {
-    redirect('/auth/login');
+    redirect('/auth/login?redirect=/guide/dashboard');
   }
 
-  // Check if user is a guide
-  const { data: guideProfile } = await supabase
-    .from('guide_profiles')
-    .select('*')
-    .eq('user_id', session.user.id)
+  // Verify user is a guide
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', session.user.id)
     .single();
 
-  if (!guideProfile) {
-    redirect('/become-guide');
+  if (!profile || profile.role !== 'guide') {
+    redirect('/');
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b border-gray-200">
-        {/* Guide dashboard navigation */}
-      </nav>
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 pt-[72px]">
+      <GuideNav />
+      <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         {children}
       </main>
     </div>
