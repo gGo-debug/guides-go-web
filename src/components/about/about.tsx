@@ -189,7 +189,7 @@ export default function About() {
                 variants={fadeIn}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-2xl font-bold mb-1">{service.name}</h3>
+                <h3 className="text-2xl font-bold mb-1 bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">{service.name}</h3>
                 <p className="text-gray-600 mb-2 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-left font-medium">
                   {service.description}
                 </p>
