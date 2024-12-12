@@ -21,9 +21,85 @@ const staggerChildren = {
   },
 };
 
+const services = [
+  {
+    name: "Hunting",
+    description:
+      "From big game to bird hunting, including safety courses, tracking skills, and guided hunts for all levels.",
+  },
+  {
+    name: "Fishing",
+    description:
+      "Enjoy river, ocean, and fly fishing, with options for deep-sea saltwater adventures, ice fishing, and catch-and-release trips.",
+  },
+  {
+    name: "Winter Sports",
+    description:
+      "Skiing, snowboarding, snowshoeing, ice climbing, and avalanche safety training.",
+  },
+  {
+    name: "Water Sports",
+    description:
+      "Kayaking, rafting, stand-up paddleboarding, snorkeling, and wild swimming.",
+  },
+  {
+    name: "Camping & Survival",
+    description:
+      "Learn essential wilderness skills like shelter-building, foraging, and survival techniques.",
+  },
+  {
+    name: "Hiking & Trekking",
+    description:
+      "Guided day hikes, peak climbing, long-distance treks, and specialized photography hikes.",
+  },
+  {
+    name: "Extreme Sports",
+    description: "Rock climbing, zip-lining, paragliding, skydiving, and more.",
+  },
+  {
+    name: "Wildlife & Nature Tours",
+    description:
+      "Birdwatching, whale watching, and wildlife photography safaris.",
+  },
+  {
+    name: "Educational Workshops",
+    description:
+      "Wilderness first aid, outdoor cooking, knot-tying, environmental education, and more.",
+  },
+  {
+    name: "Outdoor Fitness & Mountain Training",
+    description:
+      "Outdoor fitness camps, mountain endurance training, and guided fitness hikes for all levels.",
+  },
+  {
+    name: "Family-Friendly Adventures",
+    description:
+      "Nature walks, safe family camping experiences, and other child-friendly outdoor activities.",
+  },
+  {
+    name: "Cultural and Historical Tours",
+    description:
+      "Indigenous heritage tours, archaeology hikes, and local history walks.",
+  },
+  {
+    name: "Specialty Experiences",
+    description: "Mushroom foraging, fall color tours, and full moon hikes.",
+  },
+  {
+    name: "Corporate Retreats & Group Events",
+    description:
+      "Customized outdoor team-building activities, corporate retreats, and group events designed to foster collaboration, leadership, and connection in the great outdoors.",
+  },
+  {
+    name: "Conservation Initiatives",
+    description:
+      "Participate in environmental conservation activities, including clean-up events, wildlife preservation efforts, and sustainable travel practices that protect Canada's natural habitats.",
+  },
+];
+
 export default function About() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-100">
       <motion.header
         initial="hidden"
         animate="visible"
@@ -34,12 +110,18 @@ export default function About() {
           backgroundBlendMode: "overlay",
         }}
       >
+        {/* <h1 className="text-4xl font-bold mb-4">About GuidesGo</h1>
+        <p className="text-xl max-w-2xl mx-auto">
+          Connecting adventurers with expert guides for unforgettable outdoor
+          experiences across Canada.
+        </p> */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mt-12">
           About{" "}
           <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
             GuidesGo
           </span>
         </h1>
+
         <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto my-6">
           Connecting adventurers with expert guides for unforgettable outdoor
           experiences across Canada.
@@ -61,16 +143,16 @@ export default function About() {
           </h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="md:w-1/2">
-              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-gray-700 dark:text-gray-300 text-left font-medium">
+              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-left font-medium">
                 Born out of a love for Canada's wild landscapes, Guides GO was
                 created by a group of outdoor enthusiasts who wanted to make
                 outdoor adventures more accessible and environmentally
                 conscious.
               </p>
-              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-gray-700 dark:text-gray-300 text-left font-medium">
+              <p className="mb-4 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-mountain-gray/80 text-left font-medium">
                 Our mission is simple: to connect adventurers with expert
                 guides, ensure sustainable practices, and make it easier for
-                guides to manage and grow their businesses. Whether you're a
+                guides to manage and grow their businesses. Whether you’re a
                 beginner looking to try something new or an experienced explorer
                 seeking a unique challenge, we want every trip to be an
                 unforgettable journey that also contributes to the conservation
@@ -101,6 +183,20 @@ export default function About() {
               Offer
             </span>
           </h2>
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+                <h3 className="text-2xl font-bold mb-1 bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">{service.name}</h3>
+                <p className="text-gray-600 mb-2 text-base md:text-lg lg:text-xl mt-6 max-w-2xl mx-auto text-left font-medium">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </div> */}
           <CardCarousel />
         </motion.section>
 
@@ -111,13 +207,13 @@ export default function About() {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold mb-6">For Guides</h2>
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
-            <p className="mb-8 text-base md:text-lg lg:text-xl mx-auto text-gray-700 dark:text-gray-300 text-left font-medium">
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <p className="mb-8 text-base md:text-lg lg:text-xl mx-auto text-mountain-gray/80 text-left font-medium">
               Guides GO offers more than just a platform to connect with
               clients—we provide guides with tools to manage their business,
               streamline bookings, and grow their client base.
             </p>
-            <p className="text-base md:text-lg lg:text-xl mx-auto text-gray-700 dark:text-gray-300 text-left font-medium">
+            <p className="text-base md:text-lg lg:text-xl mx-auto text-mountain-gray/80 text-left font-medium">
               Whether you're running a fishing trip or leading a wilderness
               survival course, we make it easier for you to focus on what you do
               best: sharing your outdoor expertise, creating lasting memories,
@@ -132,12 +228,12 @@ export default function About() {
           variants={staggerChildren}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12 mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-12 mb-16">
             Why Choose{" "}
             <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
               GuidesGo
             </span>
-          </h2>
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
             {[
               { icon: FaMapMarkedAlt, text: "Expert Local Guides" },
@@ -172,7 +268,7 @@ export default function About() {
           </p>
           <Link
             href="/waitlist"
-            className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity"
+            className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             Explore GuidesGo
           </Link>
