@@ -1,59 +1,35 @@
-// app/auth/register/page.tsx
 "use client";
 
 import { useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { register } from "../actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 export default function RegisterPage() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    isGuide: false,
-  });
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClientComponentClient();
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  async function handleSubmit(formData: FormData) {
     setError(null);
-
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            full_name: formData.fullName,
-            role: formData.isGuide ? "guide" : "user",
-          },
-        },
-      });
-
-      if (error) {
-        setError(error.message);
-        return;
-      }
-
-      if (formData.isGuide) {
-        router.push("/guide/onboarding");
-      } else {
-        router.push("/dashboard");
-      }
-      router.refresh();
-    } catch (error) {
-      setError("An unexpected error occurred");
-    } finally {
-      setIsLoading(false);
+    setSuccessMessage(null);
+    setIsLoading(true);
+    const result = await register(formData);
+    if (result.error) {
+      setError(result.error);
+    } else if (result.success) {
+      setSuccessMessage(
+        result.message ||
+          "Registration successful. Please check your email for confirmation instructions."
+      );
+      // Optionally, redirect after a delay
+      setTimeout(() => router.push("/auth/login"), 5000);
     }
-  };
+    setIsLoading(false);
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -65,10 +41,15 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        <form onSubmit={handleRegister} className="mt-8 space-y-6">
+        <form action={handleSubmit} className="mt-8 space-y-6">
           {error && (
             <div className="bg-red-50 text-red-500 p-4 rounded-md text-sm">
               {error}
+            </div>
+          )}
+          {successMessage && (
+            <div className="bg-green-50 text-green-500 p-4 rounded-md text-sm">
+              {successMessage}
             </div>
           )}
 
@@ -82,10 +63,8 @@ export default function RegisterPage() {
               </label>
               <Input
                 id="fullName"
-                value={formData.fullName}
-                onChange={(e) =>
-                  setFormData({ ...formData, fullName: e.target.value })
-                }
+                name="fullName"
+                type="text"
                 required
                 className="mt-1"
               />
@@ -100,11 +79,8 @@ export default function RegisterPage() {
               </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
                 required
                 className="mt-1"
               />
@@ -119,11 +95,8 @@ export default function RegisterPage() {
               </label>
               <Input
                 id="password"
+                name="password"
                 type="password"
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
                 required
                 className="mt-1"
               />
@@ -132,11 +105,8 @@ export default function RegisterPage() {
             <div className="flex items-center">
               <input
                 id="isGuide"
+                name="isGuide"
                 type="checkbox"
-                checked={formData.isGuide}
-                onChange={(e) =>
-                  setFormData({ ...formData, isGuide: e.target.checked })
-                }
                 className="h-4 w-4 text-primary border-gray-300 rounded"
               />
               <label

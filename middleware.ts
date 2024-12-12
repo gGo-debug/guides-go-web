@@ -1,46 +1,32 @@
-import { NextRequest } from "next/server";
-import { updateSession } from "@/utils/supabase/middleware";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  // Check if we're in a GitHub Codespaces environment
-  const isGitHubCodespaces = request.headers
-    .get("x-forwarded-host")
-    ?.includes(".app.github.dev");
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
 
-  if (isGitHubCodespaces) {
-    // If we're in GitHub Codespaces, set the correct origin
-    const newHeaders = new Headers(request.headers);
-    newHeaders.set(
-      "origin",
-      `https://${request.headers.get("x-forwarded-host")}`
-    );
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    // Create a new request with the updated headers
-    const newRequest = new NextRequest(request.nextUrl, {
-      headers: newHeaders,
-      method: request.method,
-      body: request.body,
-      cache: request.cache,
-      credentials: request.credentials,
-      integrity: request.integrity,
-      keepalive: request.keepalive,
-      mode: request.mode,
-      redirect: request.redirect,
-      referrer: request.referrer,
-      referrerPolicy: request.referrerPolicy,
-      signal: request.signal,
-    });
-
-    // Pass the new request to updateSession
-    return await updateSession(newRequest);
+  // If the user is not signed in and trying to access a protected route, redirect them to the login page
+  if (!session && req.nextUrl.pathname.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/auth/login", req.url));
   }
 
-  // For non-GitHub Codespaces environments, proceed as normal
-  return await updateSession(request);
+  // If the user is signed in and trying to access the login or register page, redirect them to the dashboard
+  if (
+    session &&
+    (req.nextUrl.pathname.startsWith("/auth/login") ||
+      req.nextUrl.pathname.startsWith("/auth/register"))
+  ) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+
+  return res;
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

@@ -1,21 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { login } from '../actions'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Link from 'next/link'
+import { useState } from "react";
+import { login } from "../actions";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function LoginPage() {
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
-    setError(null)
-    const result = await login(formData)
+    setError(null);
+    setIsLoading(true);
+    const result = await login(formData);
     if (result?.error) {
-      setError(result.error)
+      setError(result.error);
     }
-    // Successful login is handled by the server action (redirect)
+    setIsLoading(false);
   }
 
   return (
@@ -35,7 +37,10 @@ export default function LoginPage() {
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
               <Input
@@ -48,7 +53,10 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <Input
@@ -61,20 +69,20 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <Button
-            type="submit"
-            className="w-full"
-          >
-            Sign in
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? "Signing in..." : "Sign in"}
           </Button>
 
           <div className="text-center text-sm">
-            <Link href="/auth/register" className="text-primary hover:text-primary/80">
+            <Link
+              href="/auth/register"
+              className="text-primary hover:text-primary/80"
+            >
               Don't have an account? Sign up
             </Link>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }

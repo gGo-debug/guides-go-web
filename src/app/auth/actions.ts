@@ -1,13 +1,14 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import type { Database } from "@/database.types";
 
-export async function login(formData: FormData) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+type UserRole = Database["public"]["Enums"]["user_role"];
 
+type ActionResult = { error?: string; success?: boolean; message?: string };
+
+export async function login(formData: FormData): Promise<ActionResult> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
@@ -15,24 +16,36 @@ export async function login(formData: FormData) {
     return { error: "Please provide both email and password" };
   }
 
-  const { data, error } = await (
-    await supabase
-  ).auth.signInWithPassword({
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
-  if (error) {
-    return { error: error.message };
+  if (authError) {
+    return { error: authError.message };
   }
 
-  // After successful login, check if user is a guide
-  const { data: profile } = await (await supabase)
+  if (!user) {
+    return { error: "No user found" };
+  }
+
+  // Get user profile with role
+  const { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("role")
-    .eq("id", data.user.id)
+    .eq("id", user.id)
     .single();
 
+  if (profileError) {
+    return { error: "Error fetching user profile" };
+  }
+
+  // Redirect based on role
   if (profile?.role === "guide") {
     redirect("/guide/dashboard");
   } else {
@@ -40,57 +53,67 @@ export async function login(formData: FormData) {
   }
 }
 
-export async function register(formData: FormData) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
+export async function register(formData: FormData): Promise<ActionResult> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const fullName = formData.get("fullName") as string;
   const isGuide = formData.get("isGuide") === "on";
+  const role: UserRole = isGuide ? "guide" : "user";
 
   if (!email || !password || !fullName) {
     return { error: "Please fill in all required fields" };
   }
 
-  const { data, error } = await (
-    await supabase
-  ).auth.signUp({
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         full_name: fullName,
-        role: isGuide ? "guide" : "user",
+        role: role,
       },
     },
   });
 
-  if (error) {
-    return { error: error.message };
+  if (authError) {
+    return { error: authError.message };
   }
 
-  if (data.user) {
-    // Create profile record
-    const { error: profileError } = await (await supabase)
-      .from("profiles")
-      .insert({
-        id: data.user.id,
-        full_name: fullName,
-        email: email,
-        role: isGuide ? "guide" : "user",
-      });
-
-    if (profileError) {
-      return { error: profileError.message };
-    }
-
-    if (isGuide) {
-      redirect("/guide/onboarding");
-    } else {
-      redirect("/dashboard");
-    }
+  if (!user) {
+    return { error: "Failed to create user" };
   }
 
-  return { error: "An unexpected error occurred" };
+  // Create profile
+  const { error: profileError } = await supabase.from("profiles").insert({
+    id: user.id,
+    full_name: fullName,
+    email: email,
+    role: role,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  });
+
+  if (profileError) {
+    // Cleanup auth user if profile creation fails
+    await supabase.auth.admin.deleteUser(user.id);
+    return { error: "Failed to create user profile" };
+  }
+
+  return {
+    success: true,
+    message:
+      "Registration successful. Please check your email for confirmation instructions.",
+  };
+}
+
+export async function logout(): Promise<ActionResult> {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+  redirect("/");
+  return { success: true };
 }

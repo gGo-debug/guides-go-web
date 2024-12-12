@@ -1,7 +1,7 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { GuideNav } from '@/components/guide/GuideNav';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { GuideNav } from "@/components/guide/GuideNav";
 
 export default async function GuideLayout({
   children,
@@ -9,21 +9,23 @@ export default async function GuideLayout({
   children: React.ReactNode;
 }) {
   const supabase = createServerComponentClient({ cookies });
-  const { data: { session } } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
   if (!session) {
-    redirect('/auth/login?redirect=/guide/dashboard');
+    redirect("/auth/login?redirect=/guide/dashboard");
   }
 
   // Verify user is a guide
   const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', session.user.id)
+    .from("profiles")
+    .select("role")
+    .eq("id", session.user.id)
     .single();
 
-  if (!profile || profile.role !== 'guide') {
-    redirect('/');
+  if (!profile || profile.role !== "guide") {
+    redirect("/");
   }
 
   return (
