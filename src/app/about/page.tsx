@@ -1,4 +1,4 @@
-import About from "@/components/about/about-bak";
+import About from "@/components/about/about";
 
 export default function AboutPage() {
   return <About />;

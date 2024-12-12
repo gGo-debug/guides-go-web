@@ -120,7 +120,7 @@ export default function CardCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-8xl mx-auto pt-12">
+    <div className="relative w-full max-w-7xl mx-auto pt-12 mb-10 -translate-x-2">
       <div className="overflow-hidden h-[180px]">
         {" "}
         {/* Fixed height container */}
@@ -143,18 +143,18 @@ export default function CardCarousel() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="flex space-x-2 absolute w-full -translate-x-6"
+            className="flex space-x-2 absolute px-6 w-full"
           >
             {visibleCards.map((card) => (
               <Card
                 key={card.id}
-                className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden min-h-[160px]"
+                className="w-full sm:w-full md:w-1/3 flex-shrink-0 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden min-h-[160px]"
               >
                 <CardContent className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-[#0E9871] to-[#39CF8D] bg-clip-text text-transparent">
+                  <h3 className="md:text-2xl lg:text-2xl font-semibold mb-8 bg-gradient-to-r from-[#0E9871] to-[#39CF8D] bg-clip-text text-transparent">
                     {card.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 flex-grow">
+                  <p className="text-gray-600 lg:text-lg md:text-lg dark:text-gray-300 flex-grow font-medium">
                     {card.description}
                   </p>
                 </CardContent>
@@ -164,7 +164,7 @@ export default function CardCarousel() {
         </AnimatePresence>
       </div>
       <Button
-        className="absolute left-0 top-1 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700"
+        className="absolute left-0 top-1 -translate-y-1/2 translate-x-4 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700"
         onClick={() => moveCarousel(-1)}
         aria-label="Previous card"
       >

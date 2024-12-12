@@ -51,7 +51,7 @@ export default function About() {
           initial="hidden"
           animate="visible"
           variants={fadeIn}
-          className="mb-16"
+          className="mb-28"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12">
             Our{" "}
@@ -93,15 +93,39 @@ export default function About() {
           initial="hidden"
           animate="visible"
           variants={staggerChildren}
-          className="mb-16"
+          className="mb-16 mt-12"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12">
-            What We{" "}
-            <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
-              Offer
-            </span>
-          </h2>
-          <CardCarousel />
+          {/* <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/whale.jpeg')",
+              width: "100vw",
+              left: "50%",
+              right: "50%",
+              marginLeft: "-50vw",
+              marginRight: "-50vw",
+            }}
+          /> */}
+          <div
+            className="bg-black/60 relative z-10 py-24 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/whale.jpeg')",
+              backgroundBlendMode: "overlay",
+              width: "100vw",
+              left: "50%",
+              right: "50%",
+              marginLeft: "-50vw",
+              marginRight: "-50vw",
+            }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-5xl mx-auto text-center mb-12 text-white">
+              What We{" "}
+              <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] inline-block text-transparent bg-clip-text">
+                Offer
+              </span>
+            </h2>
+            <CardCarousel />
+          </div>
         </motion.section>
 
         <motion.section
