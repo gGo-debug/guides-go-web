@@ -1,7 +1,9 @@
+// app/guide/layout.tsx
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { GuideNav } from "@/components/guide/GuideNav";
+import { Sidebar } from "@/components/guide/Sidebar";
 
 export default async function GuideLayout({
   children,
@@ -9,15 +11,15 @@ export default async function GuideLayout({
   children: React.ReactNode;
 }) {
   const supabase = createServerComponentClient({ cookies });
+
+  // Check authentication and guide role
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
   if (!session) {
-    redirect("/auth/login?redirect=/guide/dashboard");
+    redirect("/auth/login");
   }
 
-  // Verify user is a guide
   const { data: profile } = await supabase
     .from("profiles")
     .select("role")
@@ -29,11 +31,19 @@ export default async function GuideLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-[72px]">
+    <div className="min-h-screen bg-gray-50">
+      {/* Top Navigation */}
       <GuideNav />
-      <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        {children}
-      </main>
+
+      <div className="flex h-[calc(100vh-72px)]">
+        {/* Sidebar */}
+        <Sidebar />
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto">
+          <div className="container mx-auto px-4 py-8">{children}</div>
+        </main>
+      </div>
     </div>
   );
 }
