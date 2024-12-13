@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 // Load fonts
 const inter = Inter({
@@ -93,6 +94,7 @@ export default function RootLayout({
         <Footer />
         <FloatingCTA />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
