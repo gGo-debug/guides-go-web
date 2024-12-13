@@ -22,7 +22,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn("flex flex-col space-y-1.5 p-4 sm:p-6", className)}
     {...props}
   />
 ));
@@ -34,13 +34,15 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn(
+      "text-base sm:text-lg md:text-xl font-semibold leading-tight tracking-tight",
+      className
+    )}
     {...props}
   />
 ));
 CardTitle.displayName = "CardTitle";
 
-// Modified CardMeta to be hidden by default and shown on hover
 const CardMeta = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -48,7 +50,7 @@ const CardMeta = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-sm text-muted-foreground mt-2",
+      "text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2",
       "transition-all duration-200",
       className
     )}
@@ -64,7 +66,7 @@ const CardDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-sm text-muted-foreground mt-2",
+      "text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2",
       "transition-all duration-200",
       className
     )}
@@ -77,7 +79,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-4 sm:p-6 pt-0", className)} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -87,7 +89,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn("flex items-center p-4 sm:p-6 pt-0", className)}
     {...props}
   />
 ));

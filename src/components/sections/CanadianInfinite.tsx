@@ -49,12 +49,12 @@ const features: Feature[] = [
     season: "May-Oct",
   },
   {
-    title: "Sturgeon Fishing",
-    location: "Fraser River, BC",
+    title: "Fishing",
+    location: "Canada",
     description:
-      "Catch and release massive prehistoric sturgeon in pristine waters",
+      "Dive into Canada's unparalleled fishing adventures. Cast your line in serene rivers, vast oceans, or master the art of fly fishing. Choose from deep-sea saltwater expeditions, thrilling ice fishing, or eco-friendly catch-and-release experiences tailored for all skill levels.",
     image: "/sturgo.jpeg",
-    season: "Apr-Oct",
+    season: "Year round",
   },
   {
     title: "Snowmobile Adventures",
@@ -92,6 +92,14 @@ const features: Feature[] = [
     image: "/horseback.jpeg",
     season: "Jun-Sep",
   },
+  {
+    title: "Hunting",
+    location: "Canada",
+    description:
+      "Embark on the ultimate hunting journey across Canada’s diverse wilderness. From tracking elusive big game to bird hunting, enjoy expertly guided expeditions that include safety courses and hands-on training. Perfect for both beginners and seasoned hunters seeking their next challenge.",
+    image: "/hunting.jpeg",
+    season: "Year round",
+  },
 ];
 
 export function InfiniteExperiencesSection() {
@@ -101,7 +109,6 @@ export function InfiniteExperiencesSection() {
 
   useEffect(() => {
     if (containerRef.current && scrollerRef.current) {
-      // Clone content for seamless loop
       const scrollerContent = Array.from(scrollerRef.current.children);
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
@@ -110,9 +117,12 @@ export function InfiniteExperiencesSection() {
         }
       });
 
-      // Set scroll properties
       if (containerRef.current) {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+        const isMobile = window.innerWidth < 768;
+        containerRef.current.style.setProperty(
+          "--animation-duration",
+          isMobile ? "30s" : "40s"
+        );
         containerRef.current.style.setProperty(
           "--animation-direction",
           "forwards"
@@ -123,8 +133,7 @@ export function InfiniteExperiencesSection() {
   }, []);
 
   return (
-    <section className="w-full relative py-32 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Background image with darker overlay */}
+    <section className="w-full relative py-16 md:py-32 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-10"
         style={{
@@ -136,9 +145,8 @@ export function InfiniteExperiencesSection() {
       </div>
 
       <div className="relative z-10">
-        {/* Section Header */}
-        <div className="space-y-6 mb-24 flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] max-w-4xl text-white text-center">
+        <div className="container mx-auto px-4 mb-12 md:mb-24">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.15] max-w-4xl mx-auto text-white text-center">
             Discover the{" "}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] text-transparent bg-clip-text">
@@ -148,13 +156,12 @@ export function InfiniteExperiencesSection() {
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl font-medium leading-relaxed text-center">
+          <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto mt-6 font-medium leading-relaxed text-center">
             Embark on extraordinary adventures unique to Canada's stunning
             outdoors.
           </p>
         </div>
 
-        {/* Scrolling Cards Container */}
         <div
           ref={containerRef}
           className="scroller relative z-20 w-full overflow-hidden"
@@ -162,7 +169,7 @@ export function InfiniteExperiencesSection() {
           <div
             ref={scrollerRef}
             className={cn(
-              "flex min-w-full shrink-0 gap-6 py-4 w-max flex-nowrap",
+              "flex min-w-full shrink-0 gap-3 md:gap-6 py-4 w-max flex-nowrap",
               start && "animate-scroll",
               "hover:[animation-play-state:paused]"
             )}
@@ -170,19 +177,19 @@ export function InfiniteExperiencesSection() {
             {features.map((feature, idx) => (
               <Card
                 key={`${feature.title}-${idx}`}
-                className="group relative bg-black/40 border-0 overflow-hidden rounded-2xl 
-                  transition-all duration-500 hover:-translate-y-2 cursor-pointer h-[450px] w-[400px]
+                className="group relative bg-black/40 border-0 overflow-hidden rounded-xl sm:rounded-2xl 
+                  transition-all duration-500 hover:-translate-y-2 cursor-pointer 
+                  h-[280px] sm:h-[350px] md:h-[450px]
+                  w-[240px] sm:w-[350px] md:w-[400px]
                   hover:bg-black/60 backdrop-blur-sm flex-shrink-0
                   shadow-[0_0_30px_-15px_rgba(0,0,0,0.3)]
                   hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.7)]"
               >
-                {/* Gradient Overlay */}
                 <div
                   className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/90 
                   opacity-80 group-hover:opacity-90 transition-opacity duration-500"
                 ></div>
 
-                {/* Main Image */}
                 <Image
                   src={feature.image}
                   alt={feature.title}
@@ -191,23 +198,21 @@ export function InfiniteExperiencesSection() {
                     group-hover:scale-105 
                     group-hover:brightness-75
                     filter brightness-90"
-                  sizes="400px"
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 350px, 400px"
                 />
 
-                {/* Content Container */}
-                <div className="relative h-full p-8 flex flex-col justify-between z-10">
-                  {/* Title at top */}
+                <div className="relative h-full p-4 sm:p-6 md:p-8 flex flex-col justify-between z-10">
                   <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 text-center">
-                    <CardTitle className="text-2xl font-bold text-white/90 group-hover:text-white mb-2 flex items-center justify-center gap-2">
+                    <CardTitle className="text-lg sm:text-xl md:text-2xl font-bold text-white/90 group-hover:text-white mb-2 flex items-center justify-center gap-2">
                       {feature.title}
-                      <MoveUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <MoveUpRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </CardTitle>
                     <div
-                      className="w-12 h-1 bg-orange-500 rounded-full transform origin-center scale-x-0 
+                      className="w-8 sm:w-12 h-1 bg-orange-500 rounded-full transform origin-center scale-x-0 
                       group-hover:scale-x-100 transition-transform duration-500 mx-auto"
                     ></div>
                     <CardMeta
-                      className="text-white/80 group-hover:text-white/90 text-base leading-relaxed 
+                      className="text-white/80 group-hover:text-white/90 text-sm sm:text-base leading-relaxed 
                       opacity-0 group-hover:opacity-100 transform translate-y-4 
                       group-hover:translate-y-0 transition-all duration-500 text-center"
                     >
@@ -216,10 +221,9 @@ export function InfiniteExperiencesSection() {
                     </CardMeta>
                   </div>
 
-                  {/* Description at bottom */}
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <CardDescription
-                      className="text-white/80 group-hover:text-white/90 text-base leading-relaxed 
+                      className="text-white/80 group-hover:text-white/90 text-sm sm:text-base leading-relaxed 
                       opacity-0 group-hover:opacity-100 transform translate-y-4 
                       group-hover:translate-y-0 transition-all duration-500 text-center"
                     >
@@ -228,7 +232,6 @@ export function InfiniteExperiencesSection() {
                   </div>
                 </div>
 
-                {/* Additional dark overlay on hover */}
                 <div
                   className="absolute inset-0 bg-black/0 group-hover:bg-black/20 
                   transition-colors duration-500"
