@@ -52,7 +52,7 @@ const features: Feature[] = [
     title: "Fishing",
     location: "Canada",
     description:
-      "Dive into Canada's unparalleled fishing adventures. Cast your line in serene rivers, vast oceans, or master the art of fly fishing. Choose from deep-sea saltwater expeditions, thrilling ice fishing, or eco-friendly catch-and-release experiences tailored for all skill levels.",
+      "Cast your line in rivers, oceans, or try fly fishing, with options for deep-sea, ice fishing, and catch-and-release trips.",
     image: "/sturgo.jpeg",
     season: "Year round",
   },
@@ -96,7 +96,7 @@ const features: Feature[] = [
     title: "Hunting",
     location: "Canada",
     description:
-      "Embark on the ultimate hunting journey across Canada’s diverse wilderness. From tracking elusive big game to bird hunting, enjoy expertly guided expeditions that include safety courses and hands-on training. Perfect for both beginners and seasoned hunters seeking their next challenge.",
+      "From bird hunting to big Game with guided trips, safety courses, and tracking skills for all experience levels.",
     image: "/hunting.jpeg",
     season: "Year round",
   },
