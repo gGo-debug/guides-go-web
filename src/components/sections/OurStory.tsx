@@ -31,7 +31,7 @@ export function StorySection() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
-                Born out of a love for Canada's wild landscapes, GuidesGo was
+                Born out of a love for Canada’s wild landscapes, GuidesGo was
                 created by a group of outdoor enthusiasts who wanted to make
                 outdoor adventures more accessible and environmentally
                 conscious.
@@ -39,12 +39,34 @@ export function StorySection() {
               <p className="text-lg md:text-xl text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
                 Our mission is simple: to connect adventurers with expert
                 guides, ensure sustainable practices, and make it easier for
-                guides to manage and grow their businesses. Whether you're a
+                guides to manage and grow their businesses. Whether you’re a
                 beginner looking to try something new or an experienced explorer
-                seeking a unique challenge, we want every trip to be an
-                unforgettable journey that also contributes to the conservation
-                of our natural spaces.
+                seeking a unique challenge, we aim to make every journey
+                unforgettable while contributing to the conservation of natural
+                spaces.
               </p>
+              <p className="text-lg md:text-xl text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
+                We focus on five main categories of experiences:
+              </p>
+              <div className="text-lg md:text-l text-[#2D3142]/80 max-w-xl mx-auto lg:mx-0">
+                <ul className="list-none pl-0 space-y-3">
+                  <li>
+                    🎣 <strong>Hunting & Fishing</strong>
+                  </li>
+                  <li>
+                    🏕️ <strong>Camping & Survival</strong>
+                  </li>
+                  <li>
+                    ❄️ <strong>Water & Winter Sports</strong>
+                  </li>
+                  <li>
+                    🥾 <strong>Hiking & Trekking</strong>
+                  </li>
+                  <li>
+                    📜 <strong>Cultural & Historical Adventures</strong>
+                  </li>
+                </ul>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -58,7 +80,7 @@ export function StorySection() {
           >
             <div className="relative h-[700px] w-full rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/sturg.jpeg"
+                src="/storyflag.jpeg"
                 alt="About image showing founders hiking"
                 width={800}
                 height={700}

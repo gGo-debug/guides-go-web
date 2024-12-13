@@ -112,7 +112,7 @@ export function InfiniteExperiencesSection() {
 
       // Set scroll properties
       if (containerRef.current) {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        containerRef.current.style.setProperty("--animation-duration", "40s");
         containerRef.current.style.setProperty(
           "--animation-direction",
           "forwards"
