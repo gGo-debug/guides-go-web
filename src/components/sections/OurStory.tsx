@@ -8,7 +8,10 @@ import Link from "next/link";
 
 export function StorySection() {
   return (
-    <section className="relative min-h-[80vh] overflow-hidden py-20 w-full">
+    <section
+      id="about"
+      className="relative min-h-[80vh] overflow-hidden py-20 w-full"
+    >
       {/* Background gradient - updated to orange */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0E9871]/10 via-[#0E9871]/5 to-transparent" />
 
