@@ -1,6 +1,6 @@
 export const navItems = [
   { label: "Book Now", href: "/waitlist" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/#about" },
   { label: "Become a Guide", href: "/waitlist" },
   { label: "Download App", href: "/waitlist" },
   // { label: 'Join Waitlist', href: '/waitlist' },

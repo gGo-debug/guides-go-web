@@ -7,26 +7,26 @@
     /* Primary Colors */
     --primary: 142 54% 26%; /* #2A5A3B Forest Green */
     --primary-foreground: 0 0% 100%;
-    
+
     /* Secondary/Accent */
     --accent: 16 100% 60%; /* #FF6B35 Sunset Orange */
     --accent-foreground: 0 0% 100%;
-    
+
     /* UI Colors */
     --background: 0 0% 100%; /* #FFFFFF */
     --foreground: 226 14% 22%; /* #2D3142 Mountain Gray */
-    
+
     /* Secondary Palette */
     --secondary: 203 100% 75%; /* #7DCFFF Sky Blue */
     --secondary-foreground: 226 14% 22%;
     --earth: 27 30% 42%; /* #8B6B4A Earth Brown */
-    
+
     /* Utility Colors */
     --success: 142 65% 49%; /* #34C759 */
     --warning: 44 100% 50%; /* #FFB800 */
     --destructive: 3 100% 59%; /* #FF3B30 */
     --info: 211 100% 50%; /* #007AFF */
-    
+
     /* UI Elements */
     --muted: 226 14% 22% / 0.1;
     --muted-foreground: 226 14% 22% / 0.6;
@@ -52,31 +52,46 @@
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
     font-family: "Inter", sans-serif;
     font-size: 16px;
     line-height: 24px;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Montserrat", sans-serif;
   }
-  
+
   h1 {
     @apply text-[48px] leading-[56px] font-bold;
   }
-  
+
   h2 {
     @apply text-[36px] leading-[44px] font-semibold;
   }
-  
+
   h3 {
     @apply text-[24px] leading-[32px] font-semibold;
   }
-  
+
   h4 {
     @apply text-[20px] leading-[28px] font-semibold;
   }
+}
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
 }
