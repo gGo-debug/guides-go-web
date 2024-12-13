@@ -10,19 +10,24 @@ import GuideRecruitment from "@/components/sections/GuideRecruitment";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { Features } from "@/components/sections/Features";
 import AdventureListings from "./components/sections/AdventureListings";
+import { StorySection } from "@/components/sections/OurStory";
+import { InfiniteExperiencesSection } from "@/components/sections/CanadianInfinite";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <Hero />
       <AdventureListings />
+      <InfiniteExperiencesSection />
+      <StorySection />
       <Features />
       {/* <SocialProof /> */}
       {/* <FeaturesBreakdown /> */}
       {/* <CommunityImpact /> */}
       <SafetyTrust />
       {/* <AppShowcase /> */}
-      <DownloadSection />
+
+      {/* <DownloadSection /> */}
       <GuideRecruitment />
       <FinalCTA />
     </main>
