@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Load fonts
 const inter = Inter({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <main className="flex min-h-screen flex-col">{children}</main>
         <Footer />
         <FloatingCTA />
+        <SpeedInsights />
       </body>
     </html>
   );

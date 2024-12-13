@@ -17,6 +17,7 @@
     "@react-three/fiber": "^8.17.10",
     "@supabase/supabase-js": "^2.46.1",
     "@tabler/icons-react": "^3.22.0",
+    "@vercel/speed-insights": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
