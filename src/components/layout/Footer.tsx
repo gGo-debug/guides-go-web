@@ -3,20 +3,24 @@ import { Instagram, Facebook, X, Youtube } from "lucide-react";
 import { XIcon } from "@/components/ui/XIcon";
 
 const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/guides_go?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/guides_go?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    label: "Instagram",
+  },
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: XIcon, href: "https://x.com/guides_go", label: "Twitter (X)" },
   { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
 const footerLinks = [
-  { label: "About Us", href: "/about" },
-  { label: "For Guides", href: "/guides" },
-  { label: "Safety", href: "/safety" },
-  { label: "Community Guidelines", href: "/community" },
-  { label: "Support", href: "/support" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
+  { label: "About Us", href: "/#about" },
+  { label: "For Guides", href: "/waitlist" },
+  { label: "Safety", href: "/waitlist" },
+  { label: "Community Guidelines", href: "/waitlist" },
+  { label: "Support", href: "/waitlist" },
+  { label: "Privacy Policy", href: "/waitlist" },
+  { label: "Terms of Service", href: "/waitlist" },
 ];
 
 export function Footer() {
@@ -100,4 +104,3 @@ export function Footer() {
     </footer>
   );
 }
-
