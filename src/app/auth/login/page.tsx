@@ -5,19 +5,33 @@ import { login } from "../actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo");
 
   async function handleSubmit(formData: FormData) {
     setError(null);
     setIsLoading(true);
-    const result = await login(formData);
-    if (result?.error) {
-      setError(result.error);
+
+    try {
+      const result = await login(formData);
+
+      if (result.error) {
+        setError(result.error);
+      } else if (result.redirect) {
+        // Navigate to the redirect URL or the specified redirect location
+        router.push(redirectTo || result.redirect);
+      }
+    } catch (err) {
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }
 
   return (

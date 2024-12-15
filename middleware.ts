@@ -1,6 +1,5 @@
+import { NextRequest, NextResponse } from "next/server";
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -10,23 +9,72 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  // If the user is not signed in and trying to access a protected route, redirect them to the login page
-  if (!session && req.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/auth/login", req.url));
+  // If user is not signed in and trying to access protected routes
+  if (!session) {
+    if (
+      req.nextUrl.pathname.startsWith("/dashboard") ||
+      req.nextUrl.pathname.startsWith("/guide/") ||
+      req.nextUrl.pathname.startsWith("/bookings/")
+    ) {
+      const redirectUrl = new URL("/auth/login", req.url);
+      redirectUrl.searchParams.set("redirectTo", req.nextUrl.pathname);
+      return NextResponse.redirect(redirectUrl);
+    }
+    return res;
   }
 
-  // If the user is signed in and trying to access the login or register page, redirect them to the dashboard
+  // Get user profile to check role and verification status
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role, is_verified")
+    .eq("id", session.user.id)
+    .single();
+
+  // Handling guide-specific routes
+  if (req.nextUrl.pathname.startsWith("/guide/")) {
+    // If user is not a guide, redirect to regular dashboard
+    if (profile?.role !== "guide") {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+
+    // If guide is not verified and trying to access anything but onboarding
+    if (
+      !profile.is_verified &&
+      !req.nextUrl.pathname.startsWith("/guide/onboarding")
+    ) {
+      return NextResponse.redirect(new URL("/guide/onboarding", req.url));
+    }
+
+    // If guide is verified and trying to access onboarding
+    if (
+      profile.is_verified &&
+      req.nextUrl.pathname.startsWith("/guide/onboarding")
+    ) {
+      return NextResponse.redirect(new URL("/guide/dashboard", req.url));
+    }
+  }
+
+  // If regular user tries to access guide routes
+  if (profile?.role === "user" && req.nextUrl.pathname.startsWith("/guide/")) {
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+
+  // Handle auth pages when already logged in
   if (
     session &&
     (req.nextUrl.pathname.startsWith("/auth/login") ||
       req.nextUrl.pathname.startsWith("/auth/register"))
   ) {
+    if (profile?.role === "guide") {
+      return NextResponse.redirect(
+        new URL(
+          profile.is_verified ? "/guide/dashboard" : "/guide/onboarding",
+          req.url
+        )
+      );
+    }
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return res;
 }
-
-export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
-};

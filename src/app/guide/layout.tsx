@@ -1,8 +1,6 @@
 // app/guide/layout.tsx
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { GuideNav } from "@/components/guide/GuideNav";
 import { Sidebar } from "@/components/guide/Sidebar";
 
 export default async function GuideLayout({
@@ -10,20 +8,21 @@ export default async function GuideLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = await createClient();
 
-  // Check authentication and guide role
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  if (!session) {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
     redirect("/auth/login");
   }
 
   const { data: profile } = await supabase
     .from("profiles")
     .select("role")
-    .eq("id", session.user.id)
+    .eq("id", user.id)
     .single();
 
   if (!profile || profile.role !== "guide") {
@@ -31,18 +30,14 @@ export default async function GuideLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Top Navigation */}
-      <GuideNav />
-
+    // Add mt-[72px] to account for the header height
+    <div className="min-h-[calc(100vh-72px)] bg-gray-50 mt-[72px]">
       <div className="flex h-[calc(100vh-72px)]">
         {/* Sidebar */}
         <Sidebar />
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="container mx-auto px-4 py-8">{children}</div>
-        </main>
+        <main className="flex-1 overflow-y-auto p-8">{children}</main>
       </div>
     </div>
   );
