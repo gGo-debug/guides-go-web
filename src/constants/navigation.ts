@@ -1,7 +1,7 @@
 export const navItems = [
   { label: "Book Now", href: "https://app.guidesgo.com" },
   { label: "About", href: "/#about" },
-  { label: "Become a Guide", href: "https://app.guidesgo.com" },
+  { label: "Become a Guide", href: "https://app.guidesgo.com/sign-up" },
   { label: "Download App", href: "/waitlist" },
   // { label: 'Join Waitlist', href: '/waitlist' },
 ] as const;
