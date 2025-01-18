@@ -55,7 +55,7 @@ export function Hero() {
                     Download App
                   </Button>
                 </Link>
-                <Link href="/waitlist">
+                <Link href="https://app.guidesgo.com">
                   <Button
                     variant="outline"
                     size="lg"
