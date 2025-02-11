@@ -46,16 +46,17 @@ export function Hero() {
 
               {/* Buttons section */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/waitlist">
+                <Link href="https://app.guidesgo.com">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg"
+                    className="bg-gradient-to-r from-[#0E9871] to-[#39CF8D] hover:opacity-90 text-white gap-2 shadow-lg hover:shadow-xl transition-all px-9 py-7 text-lg"
                   >
-                    <Download className="w-6 h-6" />
-                    Download App
+                    {/* <Download className="w-6 h-6" /> */}
+                    Book Now
+                    <ArrowRight className="w-6 h-6" />
                   </Button>
                 </Link>
-                <Link href="https://app.guidesgo.com">
+                {/* <Link href="https://app.guidesgo.com">
                   <Button
                     variant="outline"
                     size="lg"
@@ -64,7 +65,7 @@ export function Hero() {
                     Book Now
                     <ArrowRight className="w-6 h-6" />
                   </Button>
-                </Link>
+                </Link> */}
               </div>
 
               {/* Social proof section */}
